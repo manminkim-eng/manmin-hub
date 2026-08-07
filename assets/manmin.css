@@ -71,7 +71,8 @@ section.meta table,section.meta tr,section.meta th,section.meta td{display:rever
 section.meta table{width:100%;border-collapse:collapse;font-size:12.5px;}
 section.meta th{text-align:left;color:var(--sub);font-weight:600;padding:7px 0;white-space:nowrap;
   vertical-align:top;border:0;background:none;width:118px;}
-section.meta td{padding:7px 0;word-break:break-all;border:0;}
+section.meta td{padding:7px 0;word-break:break-all;border:0;font-size:12.5px;}
+section.meta td::before{display:none;}
 section.meta tr+tr th,section.meta tr+tr td{border-top:1px dashed var(--line2);}
 
 /* ---------- 표 → 폰에서는 카드 ---------- */
@@ -81,11 +82,16 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
 table,tbody,tr,td{display:block;}
 tr{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--line);
   border-radius:11px;margin-bottom:9px;padding:4px 12px;}
-td{display:grid;grid-template-columns:88px 1fr;gap:4px 10px;align-items:start;
-  border:0;border-bottom:1px dashed var(--line2);padding:7px 0;word-break:break-word;}
+/* 라벨은 값 위에 캐션으로 — 값이 카드 폭 전부를 쓴다(우측 여백 제거) */
+td{display:block;border:0;border-bottom:1px dashed var(--line2);padding:7px 0;
+  font-size:13.5px;line-height:1.55;
+  overflow-wrap:anywhere;word-break:keep-all;}   /* 한글은 어절 유지, 긴 URL만 강제분할 */
 td:last-child{border-bottom:0;}
-td::before{content:attr(data-label);color:var(--sub);font-size:11px;font-weight:700;line-height:1.5;}
-td[data-label=""]::before,td:not([data-label])::before{content:none;}
+td::before{content:attr(data-label);display:block;margin-bottom:1px;
+  color:var(--sub);font-size:10.5px;font-weight:700;letter-spacing:.03em;
+  line-height:1.35;word-break:keep-all;}
+/* 라벨이 없으면(구버전 HTML·JS 미실행) 캐션 자리를 아예 만들지 않는다 */
+td[data-label=""]::before,td:not([data-label])::before{display:none;}
 td.alt{background:none;} td.warn{background:#FBEAD2;border-radius:6px;padding:7px 8px;}
 td.bad{background:#F6DAD5;border-radius:6px;padding:7px 8px;}
 td.ok{background:#E4F1E9;border-radius:6px;padding:7px 8px;}
@@ -149,9 +155,10 @@ footer .lg img{width:100%;height:100%;object-fit:cover;display:block;}
   table{min-width:560px;}
   table,tbody{display:revert;} tr{display:table-row;background:none;border:0;border-radius:0;margin:0;padding:0;}
   thead{position:static;width:auto;height:auto;overflow:visible;clip:auto;display:table-header-group;}
-  th,td{display:table-cell;border:1px solid var(--line2);padding:7px 9px;text-align:left;vertical-align:top;}
+  th,td{display:table-cell;border:1px solid var(--line2);padding:7px 9px;text-align:left;vertical-align:top;
+    font-size:12px;line-height:1.55;overflow-wrap:normal;word-break:keep-all;}
   thead th{background:#EFEDE7;color:var(--navy-d);font-weight:700;font-size:12px;text-align:center;position:sticky;top:0;}
-  td::before{content:none;}
+  td::before{content:none;display:none;}
   td.alt{background:#FAF9F6;} td.warn{background:#FBEAD2;} td.bad{background:#F6DAD5;}
   td.ok{background:#E4F1E9;} td.hd{background:#EFEDE7;}
   td.warn,td.bad,td.ok{border-radius:0;padding:7px 9px;}
@@ -172,8 +179,8 @@ footer .lg img{width:100%;height:100%;object-fit:cover;display:block;}
   table{min-width:0;display:table;font-size:8.5pt;} tbody{display:table-row-group;}
   tr{display:table-row;background:none;border:0;margin:0;padding:0;break-inside:avoid;}
   thead{position:static;width:auto;height:auto;overflow:visible;clip:auto;display:table-header-group;}
-  th,td{display:table-cell;border:1px solid #ECE9E2;padding:5px 6px;}
-  td::before{content:none;}
+  th,td{display:table-cell;border:1px solid #ECE9E2;padding:5px 6px;font-size:8.5pt;line-height:1.45;}
+  td::before{content:none;display:none;}
   thead th,td.warn,td.bad,td.alt,td.ok,td.hd,.mm-logo,.mm-ver{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   h2{break-after:avoid;} .card{break-inside:avoid;} .toc{break-after:page;}
 }
