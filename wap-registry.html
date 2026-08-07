@@ -9,6 +9,13 @@
 <title>WAP 통합관리대장 · MANMIN</title>
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MANMIN 허브">
+<meta name="application-name" content="MANMIN 허브">
+
 <style id="legacy">
   :root{
     --navy:#14304f; --teal:#1f7a6b; --gold:#b8863b; --line:#dde3e9; --bg:#f4f6f8;
@@ -75,6 +82,7 @@
    <b>MANMIN<span>INTEGRATED MGMT</span></b>
  </a>
  <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
+ <button type="button" class="mm-install" id="mm-install" hidden>＋ 앱 설치</button>
  <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
 </div>
 <header class="mm-head">
@@ -82,7 +90,7 @@
  <div class="txt">
   <p class="mm-kicker">MANMIN ENGINEERING · WAP REGISTRY</p>
   <h1>WAP 통합관리대장</h1>
-  <p class="sub">버전·저장소·근거법규·변경이력 추적 · 기준일 2026-08-05</p>
+  <p class="sub">버전·저장소·근거법규·변경이력 추적 · 등재 <b id="wapcount">–</b>종 · 대장 기준일 <b id="asof">–</b> · 배포 기준일 2026-08-05</p>
   <div class="mm-ver">MANMIN VER-1.0</div>
  </div>
 </header>
@@ -158,7 +166,7 @@ for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute
 </script>
 <script>
 const DATA = {
-  asof: "2026-07-16",
+  asof: "2026-08-05",
   waps: [
     // 메인 포탈
     {no:"00",name:"메인 포탈(홈페이지)",repo:"KIMMANMIN",ver:"2.0",disc:"포탈",std:"PWA · GitHub Pages · 정적(백엔드 없음)",review:"2026-07-16",status:"updated",note:"성능 최적화 + 버전표기 + 헤더 정리 배포 완료(f8667a2). 저장소 66MB→7.5MB, 초기로딩 약9MB→약95KB. WebP 62개·lazy 84/86·sw CACHE manmin-v2.0. 푸터에 'MANMIN PORTAL v2.0' 표시"},
@@ -168,9 +176,13 @@ const DATA = {
     {no:"03",name:"스프링클러",repo:"fire-sprinkler-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 103 [시행 2026-07-01]",review:"2026-07-09",status:"updated",note:"NFTC 시행일 2026.3.1→2026.7.1, 구 공고번호 정리"},
     {no:"04",name:"간이스프링",repo:"simple-sprinkler-calc",ver:"—",disc:"소방",std:"NFPC·NFTC 103A [2024-12-01]",review:"2026-07-09",status:"latest",note:"구 NFSC 명칭 정정 완료"},
     {no:"07",name:"옥내+옥외 겸용",repo:"combo-indoor-outdoor-calc",ver:"3.4",disc:"소방",std:"NFTC 102 [2026-07-01]·109 [2026-03-01]",review:"2026-07-09",status:"updated",note:"102 시행일 갱신, 109 현행 유지"},
-    {no:"05·06",name:"옥내+스프/옥내+간이",repo:"combo-pump/easy-fire",ver:"3.3",disc:"소방",std:"NFTC 102/103/103A",review:"2026-07-09",status:"latest",note:"시행일 인용 없음 또는 103A(2024.12.1) 현행 — 변경 불요"},
-    {no:"08~11",name:"제연·발전·통합",repo:"portal 등",disc:"소방",std:"NFTC 501(제2024-52호) 등",review:"2026-07-09",status:"check",note:"제연 풍량·차압 원문 확인 권장"},
+    {no:"05",name:"옥내+스프 겸용",repo:"combo-pump-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103 [시행 2026-07-01]",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
+    {no:"06",name:"옥내+간이 겸용",repo:"combo-easy-fire-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103A [시행 2026-07-01]",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
     // 기계설비
+    {no:"08",name:"소방 통합포털",repo:"portal",ver:"3.0",disc:"소방",std:"소방시설 통합계산 허브(개별 NFTC 준용)",review:"2026-08-05",status:"review",note:"최종커밋 2026-04-01 · 126일 경과. 허브 성격이라 버전표기 없음(정상)"},
+    {no:"09",name:"제연설비",repo:"Smoke-Control-System",ver:"3.0",disc:"소방",std:"NFPC·NFTC 501",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 우선검토 대상"},
+    {no:"10",name:"비상발전기",repo:"Emergency-Generator",ver:"3.0",disc:"소방",std:"KDS·NFTC",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-31 · 127일 경과 — 우선검토 대상"},
+    {no:"11",name:"소방시설 설치검토",repo:"Fire-Protection-Systems",ver:"2.0",disc:"소방",std:"소방시설법 시행령 [시행 2026-07-01] · 2027-01-01 시행예정본 대조 필요",review:"2026-08-05",status:"check",note:"최종커밋 2026-03-27 · 131일 경과. 타이틀 오타(Vre3.0) 미수정. 시행예정 조문 대조 미실시"},
     {no:"20",name:"건물우수",repo:"Roof-Drain",ver:"2.0",disc:"기계",std:"KDS 31 30 35:2021 · Manning",review:"2026-07-09",status:"latest",note:"현행"},
     {no:"21",name:"위생배관",repo:"Sanitary-Piping-System",ver:"2.0",disc:"기계",std:"KDS 31 30 15 · 헌터곡선",review:"2026-07-09",status:"review",note:"원본 대조 대기(변경없음 추정)"},
     {no:"22",name:"냉온수배관",repo:"CHWS-STSTEM",ver:"2.0",disc:"기계",std:"기계설비 기술기준 별표8(제2021-851호)",review:"2026-07-09",status:"latest",note:"현행(별표 원문 재확인 권장)"},
@@ -191,11 +203,13 @@ const DATA = {
     {no:"39",name:"성능지표(EPI)",repo:"Energy-Performance-Index",ver:"3.0",disc:"건축",std:"에너지절약설계기준 제2025-738호",review:"2026-07-09",status:"check",note:"부문별 최소배점(mandMin) 구현됨 — 738호 배점표 세부 재확인 권장"},
     {no:"40",name:"주차장법",repo:"Parking-Lot-Act",ver:"1.0",disc:"건축",std:"주차장법 시행령 별표1 [2025-08-17]",review:"2026-07-09",status:"latest",note:"원단위 미변경"},
     // 구조
+    {no:"37",name:"건축행정(인허가 체크리스트)",repo:"미배포",ver:"1.0",disc:"건축",std:"건축법",review:"2026-08-05",status:"check",note:"★GitHub 저장소 미생성·홈페이지 미등록. 저장소 생성 여부 결정 필요"},
     {no:"45",name:"내진성능",repo:"Seismic-Evaluation",ver:"2.1",disc:"구조",std:"건축법 제48조·시행령 제32조 · KDS 41 17 00:2022",review:"2026-07-09",status:"updated",note:"KDS 41 17 00 2018→2022 정정, KDS 17 10 00 존속 정정"},
     {no:"46",name:"설계하중",repo:"architectural-structure",ver:"1.0",disc:"구조",std:"KDS 41 12 00:2022(구 41 10 15)",review:"2026-07-09",status:"latest",note:"코드번호·수치 현행 정합"},
     // 토목
-    {no:"50",name:"토목배관",repo:"(배포 미확인)",ver:"1.0",disc:"토목",std:"KDS 61 40 00(2025-01-21) · 합리식·Manning",review:"2026-07-09",status:"review",note:"관로 근거 갱신 권장, 배포 URL 확인 필요"},
-    {no:"51",name:"토목옹벽",repo:"(배포 미확인)",ver:"1.0",disc:"토목",std:"KDS 11 80 05 · KDS 17 10 00(2024-147) M-O",review:"2026-07-09",status:"review",note:"내진 상위기준 근거 갱신 권장"}
+    {no:"50",name:"토목배관",repo:"civil-engineering-piping",ver:"1.0",disc:"토목",std:"KDS 61 40 00(2025-01-21) · 합리식·Manning",review:"2026-07-09",status:"review",note:"관로 근거 갱신 권장, 배포 URL 확인 필요"},
+    {no:"51",name:"토목옹벽",repo:"tomog-ongbyeog",ver:"1.0",disc:"토목",std:"KDS 11 80 05 · KDS 17 10 00(2024-147) M-O",review:"2026-07-09",status:"review",note:"내진 상위기준 근거 갱신 권장"},
+    {no:"60",name:"MANMIN LEGAL REVIEW",repo:"manmin-law",ver:"1.0",disc:"법규",std:"건축법·NFTC·KDS 등 월간 개정 정리",review:"2026-08-05",status:"latest",note:"2026-08-04 신규 배포 PWA. 본 법규검토 체계의 대외 서비스판 — baseline 갱신 시 함께 갱신"}
   ],
   changelog: [
     {date:"2026-07-16", big:true, title:"30 설계·감리 대가 — 엔지니어링 대가기준 통합 (Ver4.0) 배포", body:
@@ -315,5 +329,17 @@ $('pending').innerHTML = DATA.pending.map(p=>`<li>${p}</li>`).join('');
 // baseline
 $('baseline').innerHTML = `<thead><tr><th>분야</th><th>기준</th><th class="c">현행 고시</th><th class="c">시행일</th><th>비고</th></tr></thead><tbody>`+
   DATA.baseline.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td class="c">${r[2]}</td><td class="c">${r[3]}</td><td>${r[4]}</td></tr>`).join('')+`</tbody>`;
-</script></body>
+</script><script id="mm-pwa">
+if('serviceWorker' in navigator){window.addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js').catch(function(){});});}
+(function(){var dp=null;
+ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;
+   var b=document.getElementById('mm-install'); if(b){b.hidden=false;}});
+ document.addEventListener('click',function(e){
+   var t=e.target.closest&&e.target.closest('#mm-install'); if(!t||!dp)return;
+   dp.prompt(); dp.userChoice.then(function(){dp=null;t.hidden=true;});});
+ window.addEventListener('appinstalled',function(){var b=document.getElementById('mm-install');if(b)b.hidden=true;});
+})();
+</script>
+</body>
 </html>

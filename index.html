@@ -9,6 +9,13 @@
 <title>MANMIN 종합관리 허브 · MANMIN</title>
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MANMIN 허브">
+<meta name="application-name" content="MANMIN 허브">
+
 <link rel="stylesheet" href="assets/manmin.css">
 <style>:root{--accent:#B8863B;--accent-d:#96682A;}</style>
 </head>
@@ -20,6 +27,7 @@
    <b>MANMIN<span>INTEGRATED MGMT</span></b>
  </a>
  <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
+ <button type="button" class="mm-install" id="mm-install" hidden>＋ 앱 설치</button>
  <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
 </div>
 <header class="mm-head">
@@ -125,6 +133,18 @@
 <script>
 (function(){var k=document.body.getAttribute('data-mm')||'',a=document.querySelectorAll('.mm-links a');
 for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute('aria-current','page');}})();
+</script>
+<script id="mm-pwa">
+if('serviceWorker' in navigator){window.addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js').catch(function(){});});}
+(function(){var dp=null;
+ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;
+   var b=document.getElementById('mm-install'); if(b){b.hidden=false;}});
+ document.addEventListener('click',function(e){
+   var t=e.target.closest&&e.target.closest('#mm-install'); if(!t||!dp)return;
+   dp.prompt(); dp.userChoice.then(function(){dp=null;t.hidden=true;});});
+ window.addEventListener('appinstalled',function(){var b=document.getElementById('mm-install');if(b)b.hidden=true;});
+})();
 </script>
 </body>
 </html>

@@ -19,6 +19,7 @@ https://manminkim-eng.github.io/manmin-hub/
 | `law-review.html` | WAP 법규·기술기준 정밀검토 | 적갈 `#B0453A` |
 | `wap-registry-mobile.html` | WAP 통합관리대장 (모바일 전용) | 보라 `#6F5AA6` |
 | `404.html` | 오류 페이지 | 골드 |
+| `manifest.json` · `sw.js` | PWA 설치·오프라인 | — |
 
 ## assets
 
@@ -29,8 +30,25 @@ https://manminkim-eng.github.io/manmin-hub/
 | `manmin-logo-512.jpg` | 로고 축소본 | 512×512 |
 | `apple-touch-icon.png` | iOS 홈화면 아이콘 | 180×180 |
 | `favicon.png` | 파비콘 | 64×64 |
+| `icon-192.png` · `icon-512.png` | PWA 아이콘 | any |
+| `icon-192-maskable.png` · `icon-512-maskable.png` | PWA 아이콘 | maskable(여백 12%) |
 
 로고 원본(`manmin-logo.jpg`)은 **어떤 가공도 하지 않은 상태로 보존**합니다. 축소본은 파비콘·홈화면 아이콘 전용 파생물입니다.
+
+## 웹 바로설치 (PWA)
+
+허브를 브라우저에서 열면 홈화면·바탕화면에 앱처럼 설치할 수 있습니다.
+
+| 환경 | 방법 |
+|---|---|
+| Android Chrome | 네비바의 **＋ 앱 설치** 버튼, 또는 메뉴 → 앱 설치 |
+| iOS Safari | 공유 → **홈 화면에 추가** (iOS는 설치 버튼 미지원) |
+| 데스크톱 Chrome·Edge | 주소창 우측 설치 아이콘, 또는 **＋ 앱 설치** 버튼 |
+
+- `display: standalone` — 주소창 없이 앱처럼 실행
+- **바로가기 4종** — 아이콘 길게 누르면 대장·대장(모바일)·법규검토·저장소 전수분류로 바로 이동
+- `sw.js` 오프라인 캐시 — 문서는 네트워크 우선, 자산은 캐시 우선. 접속이 끊겨도 마지막 화면 열람 가능
+- 캐시 버전: `manmin-hub-v1.0.0` — 내용 갱신 시 이 값을 올려야 구버전이 남지 않습니다
 
 ## 설계 원칙
 

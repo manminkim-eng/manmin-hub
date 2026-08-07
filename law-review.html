@@ -9,6 +9,13 @@
 <title>WAP 법규·기술기준 정밀검토 · MANMIN</title>
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MANMIN 허브">
+<meta name="application-name" content="MANMIN 허브">
+
 <style id="legacy">
   :root{
     --navy:#14304f; --teal:#1f7a6b; --gold:#b8863b;
@@ -73,6 +80,7 @@
    <b>MANMIN<span>INTEGRATED MGMT</span></b>
  </a>
  <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
+ <button type="button" class="mm-install" id="mm-install" hidden>＋ 앱 설치</button>
  <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
 </div>
 <header class="mm-head">
@@ -201,20 +209,22 @@
 </section>
 
 <section>
-  <h2>6. GitHub 배포 — 사용자 조치 필요</h2>
-  <p>수정본(내진 앱 <code>index.html</code>·<code>sw.js</code>)은 <b>로컬 개발자료 폴더에 저장</b> 완료했습니다. 배포(GitHub push)는 세션 권한 제약으로 다음 중 하나가 필요합니다.</p>
-  <ul class="tight">
-    <li><b>(권장) 저장소 접근 활성화</b> — 이 세션 환경에 대상 저장소(manminkim-eng/Seismic-Evaluation 등) 접근을 추가(add repo)해 주시면, 다음 세션에서 제가 직접 커밋·푸시·배포 검증까지 마무리합니다.</li>
-    <li><b>직접 배포</b> — 로컬에 저장된 수정본을 GitHub(웹 업로드/Desktop)로 커밋하시면 즉시 GitHub Pages에 반영됩니다.</li>
-    <li><b>데스크톱 자동화</b> — 컴퓨터 사용 권한을 승인해 주시면 브라우저/GitHub Desktop을 통해 대신 업로드합니다(사용자 승인 필요).</li>
-  </ul>
-  <p style="font-size:13px;color:var(--sub)">배포 후 검증: 브라우저 새로고침 시 헤더의 <code>KDS 41 17 00 : 2022</code>·<code>Ver 2.1</code> 표기 확인, PWA 캐시 갱신(<code>naejin-v2.1.0</code>)으로 구버전 화면 미잔존 확인.</p>
+  <h2>6. GitHub 배포 — 완료 <span style="font-size:12px;font-weight:400;color:#5b6672">(2026-08-07 상태 갱신)</span></h2>
+  <div style="background:#e4f1e9;border-left:4px solid #2e7d4f;border-radius:8px;padding:12px 15px;margin:10px 0;font-size:13px">
+    <b>배포 완료.</b> 본 절은 작성 당시(2026-07-09) 세션 권한 제약으로 「사용자 조치 필요」 상태였으나,
+    <b>2026-08-07 재확인 결과 내진 앱 수정본이 이미 배포되어 있습니다.</b> 아래 검증 항목이 모두 충족되어 절 내용을 완료 상태로 갱신합니다.
+  </div>
+  <table>
+    <thead><tr><th>검증 항목</th><th>기준</th><th>2026-08-07 실측</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>저장소</td><td>manminkim-eng/Seismic-Evaluation</td><td>최종커밋 <code>91649af</code> · 2026-07-09<br>"Update version from 2.0 to 2.1 in index.html"</td><td>반영</td></tr>
+      <tr><td>헤더 버전 표기</td><td>Ver 2.1</td><td><code>index.html</code> 내 <b>Ver 2.1</b> 확인</td><td>일치</td></tr>
+      <tr><td>기준 표기</td><td>KDS 41 17 00 : 2022</td><td><b>KDS 41 17 00 : 2022 (현행)</b> 확인</td><td>일치</td></tr>
+      <tr><td>PWA 캐시 갱신</td><td>naejin-v2.1.0</td><td><code>sw.js</code> — <b>CACHE_NAME = 'naejin-v2.1.0'</b></td><td>일치</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:12.5px;color:#5b6672">확인 수단: 저장소 clone 후 코드 레벨 대조(3장의 검토 방법 교훈에 따름). 외부 페이지 수집(WebFetch) 판정은 사용하지 않았습니다.</p>
 </section>
-
-<footer class="doc">
-  본 보고서는 정밀 재검증 최종본입니다. 내진 앱 수정은 로컬 저장 완료, GitHub 배포는 사용자 조치 후 진행합니다. · MANMIN Engineering WAP Compliance Review · 2026-07-09
-</footer>
-
 
 <section id="addendum-20260805">
 <h2>7. 추록 — 2026-08-05 재조사 및 현행화</h2>
@@ -293,6 +303,18 @@
 <script>
 (function(){var k=document.body.getAttribute('data-mm')||'',a=document.querySelectorAll('.mm-links a');
 for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute('aria-current','page');}})();
+</script>
+<script id="mm-pwa">
+if('serviceWorker' in navigator){window.addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js').catch(function(){});});}
+(function(){var dp=null;
+ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;
+   var b=document.getElementById('mm-install'); if(b){b.hidden=false;}});
+ document.addEventListener('click',function(e){
+   var t=e.target.closest&&e.target.closest('#mm-install'); if(!t||!dp)return;
+   dp.prompt(); dp.userChoice.then(function(){dp=null;t.hidden=true;});});
+ window.addEventListener('appinstalled',function(){var b=document.getElementById('mm-install');if(b)b.hidden=true;});
+})();
 </script>
 </body>
 </html>

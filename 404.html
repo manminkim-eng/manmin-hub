@@ -16,6 +16,12 @@
 .nf a.btn{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;text-decoration:none;
  padding:12px 24px;border-radius:22px;font-weight:700;font-size:14px;}
 </style>
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MANMIN 허브">
+<meta name="application-name" content="MANMIN 허브">
 </head>
 <body>
 <div class="wrap"><div class="nf">
@@ -24,5 +30,17 @@
   <p>요청하신 주소가 변경되었거나 존재하지 않습니다.</p>
   <a class="btn" href="index.html">종합관리 허브로 이동</a>
 </div></div>
+<script id="mm-pwa">
+if('serviceWorker' in navigator){window.addEventListener('load',function(){
+  navigator.serviceWorker.register('sw.js').catch(function(){});});}
+(function(){var dp=null;
+ window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;
+   var b=document.getElementById('mm-install'); if(b){b.hidden=false;}});
+ document.addEventListener('click',function(e){
+   var t=e.target.closest&&e.target.closest('#mm-install'); if(!t||!dp)return;
+   dp.prompt(); dp.userChoice.then(function(){dp=null;t.hidden=true;});});
+ window.addEventListener('appinstalled',function(){var b=document.getElementById('mm-install');if(b)b.hidden=true;});
+})();
+</script>
 </body>
 </html>
