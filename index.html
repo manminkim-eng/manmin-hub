@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2B3E5E">
+<meta name="description" content="MANMIN 엔지니어링 WAP 통합관리대장·법규검토·GitHub 저장소 감사 종합관리 허브">
+<meta name="format-detection" content="telephone=no">
+<title>MANMIN 종합관리 허브 · MANMIN</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/manmin.css">
+<style>:root{--accent:#B8863B;--accent-d:#96682A;}</style>
+</head>
+<body data-mm="hub">
+<div class="wrap">
+<div class="mm-nav no-print">
+ <a class="mm-brand" href="index.html">
+   <img src="assets/manmin-logo.jpg" alt="MANMIN">
+   <b>MANMIN<span>INTEGRATED MGMT</span></b>
+ </a>
+ <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
+ <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
+</div>
+<header class="mm-head">
+ <div class="mm-logo"><img src="assets/manmin-logo.jpg" alt="ARCHITECT KIM MANMIN"></div>
+ <div class="txt">
+  <p class="mm-kicker">MANMIN ENGINEERING · INTEGRATED MANAGEMENT</p>
+  <h1>MANMIN 웹 종합관리 허브</h1>
+  <p class="sub">WAP 통합관리대장 · 법규·기술기준 검토 · GitHub 저장소 감사 — 단일 진입점</p>
+  <div class="mm-ver">MANMIN VER-1.0</div>
+ </div>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="n">54</div><div class="l">GitHub 저장소</div></div>
+  <div class="stat"><div class="n">36</div><div class="l">등재 WAP</div></div>
+  <div class="stat g"><div class="n">53</div><div class="l">Pages 배포중</div></div>
+  <div class="stat r"><div class="n">22</div><div class="l">90일↑ 방치</div></div>
+</div>
+
+<h2>1. 관리문서 — 데스크톱</h2>
+<div class="grid">
+  <a class="card" href="repo-audit.html" style="border-left-color:#1F7A6B">
+    <p class="t">GitHub 저장소 전수 분류·현황<span class="tag new">신규</span></p>
+    <p class="d">54개 저장소·1,823파일·244.8MB를 8개 분야로 분류. 자산 경량화·파일명 표준화·기술스택·유지보수 시급성 진단.</p>
+    <p class="m">기준일 <b>2026-08-05</b> · 8장 20표 · 워드본 동시 제공</p>
+  </a>
+  <a class="card" href="wap-registry.html" style="border-left-color:#2F6FB0">
+    <p class="t">WAP 통합관리대장</p>
+    <p class="d">WAP 버전·저장소·근거법규·변경이력을 표 중심으로 추적. 분야·상태 필터 제공.</p>
+    <p class="m">정본 <b>WAP_통합관리대장.xlsx</b> 와 동일 데이터</p>
+  </a>
+  <a class="card" href="law-review.html" style="border-left-color:#B0453A">
+    <p class="t">WAP 법규·기술기준 정밀검토<span class="tag chk">확인요</span></p>
+    <p class="d">분야별 최신 기준 baseline과 분기 정기검토 운영기준. 2026-08-05 재조사 추록 포함.</p>
+    <p class="m">baseline <b>2026-07-09</b> · 추록 <b>2026-08-05</b></p>
+  </a>
+</div>
+
+<h2>2. 관리문서 — 모바일 전용</h2>
+<p class="sm">현장·이동 중 조회용으로 별도 제작한 판입니다. 데스크톱 대장과 동일 데이터를 쓰되, 카드형 레이아웃과 터치 규격(44px)으로 재구성했습니다.</p>
+<div class="grid">
+  <a class="card" href="wap-registry-mobile.html" style="border-left-color:#6F5AA6">
+    <p class="t">WAP 통합관리대장 · 모바일<span class="tag mob">모바일</span></p>
+    <p class="d">카드형 반응형. 검색·분야필터·정렬 지원. NAS 앱 등 스크립트 제한 환경에서도 목록이 그대로 표시되도록 정적 렌더링.</p>
+    <p class="m">36종 등재 · 90일↑ 적색 표시 · iOS 자동확대 방지 적용</p>
+  </a>
+</div>
+
+<h2>3. 법규 개정 재조사 결과 <span style="font-size:12px;font-weight:400;color:var(--sub)">— LawMCP · 2026-08-05 확인</span></h2>
+<p class="sm">2026-07-09 baseline 이후 개정 여부를 한국 법령 MCP로 재조회한 결과입니다. 국가건설기준(KDS·KCS)과 NFTC는 LawMCP 범위 밖이므로 국가건설기준센터·소방청으로 별도 확인이 필요합니다.</p>
+<div class="tw"><table>
+<thead><tr><th>법령·고시</th><th>확인된 현행</th><th>baseline 대비</th><th>계산영향</th><th>영향 WAP</th></tr></thead>
+<tbody>
+<tr><td>건축물의 에너지절약설계기준</td><td>국토부고시 <b>제2026-360호</b><br>2026-07-08 공포·시행</td><td class="warn">고시번호 변경<br>제2025-738호 → 제2026-360호</td><td class="ok">없음 — 별표1 열관류율·EPI 65점(공공 74점) 불변</td><td>Energy-Performance-Index<br>u-value-app-</td></tr>
+<tr><td>건축법 시행령</td><td>2026-07-28 공포·시행<br>일부개정</td><td class="alt">제27조 조경 자구정정<br>제27조제1항제11호 변전소 예외 신설</td><td class="ok">없음 — 제86조 일조 정북 10m 유지</td><td>Architectural-line<br>Change-of-Use</td></tr>
+<tr><td>국토의 계획 및 이용에 관한 법률 시행령</td><td>2026-06-23 공포<br>2026-07-01 시행(타법개정)</td><td class="alt">도시·군관리계획 결정절차</td><td class="ok">없음 — 건폐율·용적률 무관</td><td>Land-Use</td></tr>
+<tr><td>소방시설 설치 및 관리에 관한 법률 시행령</td><td>2026-06-23 공포<br>2026-07-01 시행</td><td class="warn">2027-01-01 시행예정본 별도 존재<br>제35151호</td><td class="warn">확인 필요 — 조문 대조 미실시</td><td>Fire-Protection-Systems</td></tr>
+<tr><td>기계설비법 시행규칙</td><td>2026-04-16 공포<br>2026-06-01 시행</td><td class="warn">baseline 미기재</td><td class="warn">확인 필요 — 기술기준 별표8 재확인</td><td>기계설비 8종</td></tr>
+<tr><td>건축물관리법 시행령</td><td>2026-03-24 공포·시행</td><td class="warn">baseline 미기재</td><td class="warn">확인 필요 — 해체 조문 대조 미실시</td><td>demolition-calc</td></tr>
+<tr><td>주차장법 시행령</td><td>2025-08-14 공포<br>2025-08-17 시행</td><td class="alt">변동 없음</td><td class="ok">없음 — 별표1 원단위 유지</td><td>Parking-Lot-Act</td></tr>
+<tr><td>건축물의 설비기준 등에 관한 규칙</td><td>2025-10-31 공포·시행</td><td class="alt">변동 없음</td><td class="ok">없음</td><td>ventilation-equipment</td></tr>
+</tbody></table></div>
+<p class="sm"><b>요지</b> — 계산 수치를 바꾸는 개정은 확인되지 않았습니다. 다만 에너지절약설계기준 <b>고시번호 표기 갱신</b>이 필요하고(정부조직 개편으로 소관부처가 기후에너지환경부로 변경), 표에서 주황 표시된 3건은 조문 대조가 미실시 상태로 차기 정기검토 필수 항목입니다.</p>
+
+<h2>4. 최신 WAP 작업물</h2>
+<div class="tw"><table>
+<thead><tr><th>WAP</th><th>내용</th><th>배포일</th><th>대장 등재</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td><b>manmin-law</b><br>MANMIN LEGAL REVIEW</td><td>건축·구조·기계설비·소방·토목 월간 법령 개정 정리 PWA</td><td>2026-08-04</td><td class="ok">등재완료 (번호 60)</td><td class="ok">배포중 · 최신</td></tr>
+<tr><td><b>KIMMANMIN</b><br>통합 홈페이지</td><td>엔지니어링 플랫폼 본체 · 전 WAP 카드 허브</td><td>2026-08-05</td><td class="ok">등재완료 (번호 00)</td><td class="ok">배포중 · 최신</td></tr>
+<tr><td>Energy-Performance-Index</td><td>에너지 절약계획서 성능지표 산정</td><td>2026-03-30</td><td class="ok">등재완료 (번호 39)</td><td class="bad">128일 경과 · 고시번호 갱신 필요</td></tr>
+<tr><td>u-value-app-</td><td>열관류율 종합 검토 시스템</td><td>2026-06-18</td><td class="ok">등재완료 (번호 31)</td><td class="warn">48일 · 고시번호 갱신 필요</td></tr>
+</tbody></table></div>
+
+<h2>5. 종합관리 운영 규칙</h2>
+<div class="tw"><table>
+<thead><tr><th>구분</th><th>정본</th><th>파생본</th><th>갱신 시점</th></tr></thead>
+<tbody>
+<tr><td>WAP 현황</td><td>WAP_통합관리대장.xlsx</td><td>wap-registry.html · wap-registry-mobile.html</td><td>홈페이지·WAP 배포 직후 <b>(필수)</b></td></tr>
+<tr><td>법규 baseline</td><td>law-review.html</td><td>manmin-law PWA</td><td>분기 정기검토 (첫째주 화요일)</td></tr>
+<tr><td>저장소 감사</td><td>전수분류현황 .docx</td><td>repo-audit.html</td><td>반기 또는 저장소 10개 이상 증감 시</td></tr>
+</tbody></table></div>
+<p class="sm">세부 절차는 <b>MANMIN_파일기준경로_작업지시서.md 제9장</b>에 규정되어 있습니다. 법규 확인은 LawMCP를 최우선으로 사용하고, KDS·KCS는 국가건설기준센터(kcsc.re.kr)로 확인합니다.</p>
+
+<h2>6. 배포 정보</h2>
+<div class="tw"><table>
+<thead><tr><th>항목</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>버전</td><td><b>MANMIN VER-1.0</b></td></tr>
+<tr><td>배포 대상</td><td>GitHub 저장소 <b>manmin-hub</b> (신규)</td></tr>
+<tr><td>공개 URL</td><td>https://manminkim-eng.github.io/manmin-hub/</td></tr>
+<tr><td>파일 구성</td><td>index.html · repo-audit.html · wap-registry.html · wap-registry-mobile.html · law-review.html · assets/</td></tr>
+<tr><td>경로 규칙</td><td>전 파일 ASCII 파일명 · 상대경로 링크 — URL 인코딩 이슈 없음</td></tr>
+<tr><td>외부 의존성</td><td>외부 <b>리소스</b> 0건 — CDN·웹폰트·외부 스크립트 없음. 본문의 WAP 배포주소 링크는 콘텐츠 링크</td></tr>
+</tbody></table></div>
+
+<footer>
+ <span class="lg"><img src="assets/manmin-logo.jpg" alt="MANMIN"></span>
+ ㈜대성건축사사무소 · 건축사 김만민 (#20072) · 국제공인 가치공학 전문가(CVS·VMP)<br>
+ 전북 익산 · manminkim-eng · MANMIN VER-1.0 · 기준일 2026-08-05<br>본 허브는 관리문서 전용입니다. 대외 서비스는 <b>KIMMANMIN</b> 플랫폼을 이용하십시오.
+</footer>
+</div>
+<script>
+(function(){var k=document.body.getAttribute('data-mm')||'',a=document.querySelectorAll('.mm-links a');
+for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute('aria-current','page');}})();
+</script>
+</body>
+</html>

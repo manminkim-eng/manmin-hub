@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2B3E5E">
+<meta name="description" content="MANMIN WAP 통합관리대장 모바일판">
+<meta name="format-detection" content="telephone=no">
+<title>WAP 통합관리대장 · 모바일 · MANMIN</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style id="legacy">
+:root{--navy:#14304f;--navy2:#1d466b;--teal:#1f7a6b;--gold:#b8863b;--line:#dde3e9;--bg:#f4f6f8;--card:#fff;
+--ink:#1c2530;--sub:#5b6672;--red:#c0392b;--amber:#c98a12;--green:#2e7d4f;--gray:#7a8794;--blue:#2f6fb0;
+--sat:env(safe-area-inset-top,0px);--sab:env(safe-area-inset-bottom,0px);
+--sal:env(safe-area-inset-left,0px);--sar:env(safe-area-inset-right,0px);}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1620;--card:#182231;--ink:#e6ecf2;--sub:#9aa8b6;--line:#2a3646;}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:rgba(31,122,107,.18)}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Malgun Gothic','Noto Sans KR',sans-serif;
+color:var(--ink);background:var(--bg);line-height:1.55;font-size:15px;
+padding:var(--sat) var(--sar) var(--sab) var(--sal);}
+.wrap{max-width:1180px;margin:0 auto;padding:14px 12px 60px;}
+header.doc{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:14px;padding:18px 18px 16px;margin-bottom:12px;}
+header.doc .kicker{font-size:10.5px;letter-spacing:.18em;color:#9fc4bd;margin:0 0 6px;}
+header.doc h1{font-size:19px;margin:0 0 4px;line-height:1.3;}
+header.doc .meta{font-size:11.5px;color:#c9d4de;margin-top:10px;padding-top:9px;border-top:1px solid rgba(255,255,255,.18);}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:12px;}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:11px;padding:11px 6px;text-align:center;}
+.stat .n{font-size:21px;font-weight:800;line-height:1;} .stat .l{font-size:10.5px;color:var(--sub);margin-top:5px;}
+.stat.r .n{color:var(--red);} .stat.a .n{color:var(--amber);} .stat.g .n{color:var(--green);}
+.tools{background:var(--bg);padding:6px 0 8px;}
+.search{width:100%;min-height:48px;padding:12px 14px;font-size:16px;border:1px solid var(--line);
+border-radius:10px;background:var(--card);color:var(--ink);-webkit-appearance:none;appearance:none;}
+.rowlbl{font-size:11px;color:var(--sub);margin:10px 2px 5px;letter-spacing:.04em;}
+.chips{display:flex;flex-wrap:wrap;gap:7px;}
+.chip{flex:0 0 auto;min-height:44px;display:inline-flex;align-items:center;font-size:13.5px;padding:0 15px;
+border-radius:24px;border:1px solid var(--line);background:var(--card);color:var(--sub);cursor:pointer;
+white-space:nowrap;font-family:inherit;touch-action:manipulation;}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700;}
+.cnt{font-size:12.5px;color:var(--navy);font-weight:700;margin:11px 2px 0;}
+.list{display:grid;gap:9px;margin-top:10px;}
+.it{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;border-left:4px solid var(--teal);}
+.it.stale{border-left-color:var(--red);} .it.warn{border-left-color:var(--amber);}
+.it[hidden]{display:none;}
+.it .top{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap;}
+.it .no{font-size:11px;font-weight:800;color:var(--gold);letter-spacing:.05em;}
+.it h3{font-size:15.5px;margin:0;font-weight:700;flex:1;min-width:0;}
+.it .fld{font-size:10.5px;padding:2px 8px;border-radius:20px;background:var(--navy);color:#fff;font-weight:700;}
+.it .law{font-size:12px;color:var(--sub);margin:5px 0 8px;}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:12.5px;margin:7px 0 0;}
+.kv dt{color:var(--sub);white-space:nowrap;} .kv dd{margin:0;word-break:break-all;overflow-wrap:anywhere;}
+.b{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;}
+.b.ok{background:var(--green);} .b.w{background:var(--amber);} .b.d{background:var(--red);} .b.n{background:var(--gray);}
+.it a{color:var(--blue);text-decoration:none;}
+.note{font-size:11.5px;color:var(--sub);margin:8px 0 0;padding-top:7px;border-top:1px dashed var(--line);}
+.empty{text-align:center;color:var(--sub);padding:36px 0;font-size:13.5px;}
+.nojs{background:#fff6e5;border:1px solid #e8c98a;color:#7a5a12;border-radius:10px;padding:11px 13px;font-size:12.5px;margin-bottom:10px;}
+footer{margin-top:22px;font-size:11px;color:var(--sub);text-align:center;line-height:1.7;}
+@media(min-width:760px){.list{grid-template-columns:1fr 1fr;} header.doc h1{font-size:23px;} .wrap{padding:22px 18px 70px;}}
+@page{size:A4;margin:14mm 12mm;}
+@media print{.tools{display:none} .list{grid-template-columns:1fr 1fr;} body{background:#fff} .it[hidden]{display:block!important}}
+</style>
+<link rel="stylesheet" href="assets/manmin.css">
+<style>:root{--accent:#6F5AA6;--accent-d:#57457F;}</style>
+</head>
+<body data-mm="mob">
+<div class="wrap">
+<div class="mm-nav no-print">
+ <a class="mm-brand" href="index.html">
+   <img src="assets/manmin-logo.jpg" alt="MANMIN">
+   <b>MANMIN<span>INTEGRATED MGMT</span></b>
+ </a>
+ <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
+ <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
+</div>
+<header class="mm-head">
+ <div class="mm-logo"><img src="assets/manmin-logo.jpg" alt="ARCHITECT KIM MANMIN"></div>
+ <div class="txt">
+  <p class="mm-kicker">MANMIN ENGINEERING · WAP REGISTRY · MOBILE</p>
+  <h1>WAP 통합관리대장 · 모바일</h1>
+  <p class="sub">현장 조회용 카드형 · 검색·필터·정렬 · 기준일 2026-08-05</p>
+  <div class="mm-ver">MANMIN VER-1.0</div>
+ </div>
+</header>
+
+
+
+<div class="wrap">
+
+
+<div class="stats">
+  <div class="stat"><div class="n">36</div><div class="l">등재 WAP</div></div>
+  <div class="stat g"><div class="n">35</div><div class="l">Pages 배포중</div></div>
+  <div class="stat a"><div class="n">0</div><div class="l">60~89일 경과</div></div>
+  <div class="stat r"><div class="n">22</div><div class="l">90일↑ 방치</div></div>
+</div>
+
+<noscript><div class="nojs">검색·필터 기능은 사용할 수 없는 환경입니다. 아래 목록 36종은 미갱신 오래된 순으로 정렬되어 그대로 표시됩니다.</div></noscript>
+
+<div class="tools" id="tools" hidden>
+  <input class="search" id="q" type="text" inputmode="search" enterkeyhint="search" autocomplete="off"
+         placeholder="명칭·저장소·법규 검색 (예: 소화전, NFTC)">
+  <div class="rowlbl">분야</div>
+  <div class="chips" id="chips"><button type="button" class="chip on" data-f="전체">전체</button><button type="button" class="chip" data-f="소방">소방</button><button type="button" class="chip" data-f="기계설비">기계설비</button><button type="button" class="chip" data-f="건축행정">건축행정</button><button type="button" class="chip" data-f="구조">구조</button><button type="button" class="chip" data-f="토목">토목</button><button type="button" class="chip" data-f="플랫폼">플랫폼</button><button type="button" class="chip" data-f="법규">법규</button></div>
+  <div class="rowlbl">정렬</div>
+  <div class="chips" id="sorts">
+    <button type="button" class="chip on" data-s="gap">미갱신 오래된 순</button>
+    <button type="button" class="chip" data-s="recent">최근 갱신 순</button>
+    <button type="button" class="chip" data-s="no">번호 순</button>
+    <button type="button" class="chip" data-s="name">명칭 순</button>
+  </div>
+  <div class="cnt" id="cnt">36건</div>
+</div>
+
+<div class="list" id="list">
+<article class="it stale" data-f="건축행정" data-s="용도변경 change-of-use 건축법·주차장법 일치(1.0); 폴더명 표준화 완료(2026-06-09) 건축행정" data-gap="132" data-no="35" data-name="용도변경" data-commit="2026-03-26">
+<div class="top"><span class="no">35</span><h3>용도변경</h3><span class="fld">건축행정</span></div>
+<p class="law">건축법·주차장법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-26 <span class="b d">방치 132일</span></dd>
+<dt>저장소</dt><dd>Change-of-Use</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Change-of-Use" target="_blank" rel="noopener">manminkim-eng.github.io/Change-of-Use</a></dd>
+</dl>
+<p class="note">일치(1.0); 폴더명 표준화 완료(2026-06-09)</p>
+</article><article class="it stale" data-f="소방" data-s="소방시설 설치검토 fire-protection-systems 소방시설법 타이틀 오타(vre3.0) 미수정; 카드 버전표기 없음 소방" data-gap="131" data-no="11" data-name="소방시설 설치검토" data-commit="2026-03-27">
+<div class="top"><span class="no">11</span><h3>소방시설 설치검토</h3><span class="fld">소방</span></div>
+<p class="law">소방시설법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 -</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>Fire-Protection-Systems</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Fire-Protection-Systems" target="_blank" rel="noopener">manminkim-eng.github.io/Fire-Protection-Systems</a></dd>
+</dl>
+<p class="note">타이틀 오타(Vre3.0) 미수정; 카드 버전표기 없음</p>
+</article><article class="it stale" data-f="기계설비" data-s="냉온수배관 chws-ststem 기계설비법 일치(2.0); 저장소명 오타(ststem) 기계설비" data-gap="131" data-no="22" data-name="냉온수배관" data-commit="2026-03-27">
+<div class="top"><span class="no">22</span><h3>냉온수배관</h3><span class="fld">기계설비</span></div>
+<p class="law">기계설비법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>CHWS-STSTEM</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/CHWS-STSTEM" target="_blank" rel="noopener">manminkim-eng.github.io/CHWS-STSTEM</a></dd>
+</dl>
+<p class="note">일치(2.0); 저장소명 오타(STSTEM)</p>
+</article><article class="it stale" data-f="기계설비" data-s="공조덕트 air-conditioning-duct 기계설비법 일치(2.0) 기계설비" data-gap="131" data-no="23" data-name="공조덕트" data-commit="2026-03-27">
+<div class="top"><span class="no">23</span><h3>공조덕트</h3><span class="fld">기계설비</span></div>
+<p class="law">기계설비법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>Air-Conditioning-Duct</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Air-Conditioning-Duct" target="_blank" rel="noopener">manminkim-eng.github.io/Air-Conditioning-Duct</a></dd>
+</dl>
+<p class="note">일치(2.0)</p>
+</article><article class="it stale" data-f="건축행정" data-s="해체감리 demolition-calc 건축물관리법 카드 1.0 &lt; 소스 3.0 건축행정" data-gap="131" data-no="32" data-name="해체감리" data-commit="2026-03-27">
+<div class="top"><span class="no">32</span><h3>해체감리</h3><span class="fld">건축행정</span></div>
+<p class="law">건축물관리법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>demolition-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/demolition-calc" target="_blank" rel="noopener">manminkim-eng.github.io/demolition-calc</a></dd>
+</dl>
+<p class="note">카드 1.0 &lt; 소스 3.0</p>
+</article><article class="it stale" data-f="건축행정" data-s="공기산정 construction-air 건설기술진흥법 카드 1.0 &lt; 소스 3.0 건축행정" data-gap="131" data-no="34" data-name="공기산정" data-commit="2026-03-27">
+<div class="top"><span class="no">34</span><h3>공기산정</h3><span class="fld">건축행정</span></div>
+<p class="law">건설기술진흥법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>construction-air</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/construction-air" target="_blank" rel="noopener">manminkim-eng.github.io/construction-air</a></dd>
+</dl>
+<p class="note">카드 1.0 &lt; 소스 3.0</p>
+</article><article class="it stale" data-f="건축행정" data-s="국토이용(건폐·용적) land-use 국토계획법·조례 일치(1.0) 건축행정" data-gap="131" data-no="36" data-name="국토이용(건폐·용적)" data-commit="2026-03-27">
+<div class="top"><span class="no">36</span><h3>국토이용(건폐·용적)</h3><span class="fld">건축행정</span></div>
+<p class="law">국토계획법·조례</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-27 <span class="b d">방치 131일</span></dd>
+<dt>저장소</dt><dd>Land-Use</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Land-Use" target="_blank" rel="noopener">manminkim-eng.github.io/Land-Use</a></dd>
+</dl>
+<p class="note">일치(1.0)</p>
+</article><article class="it stale" data-f="소방" data-s="옥내+스프 겸용 combo-pump-calc nftc 102·103 카드 2.0 &lt; 소스 3.x; 폴더명 비표준(겸용v3.0) 보류 소방" data-gap="129" data-no="05" data-name="옥내+스프 겸용" data-commit="2026-03-29">
+<div class="top"><span class="no">05</span><h3>옥내+스프 겸용</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 102·103</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-29 <span class="b d">방치 129일</span></dd>
+<dt>저장소</dt><dd>combo-pump-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/combo-pump-calc" target="_blank" rel="noopener">manminkim-eng.github.io/combo-pump-calc</a></dd>
+</dl>
+<p class="note">카드 2.0 &lt; 소스 3.x; 폴더명 비표준(겸용v3.0) 보류</p>
+</article><article class="it stale" data-f="소방" data-s="옥내+간이 겸용 combo-easy-fire-calc nftc 102·103a 카드 1.0(가이드) &lt; 소스 3.x 소방" data-gap="129" data-no="06" data-name="옥내+간이 겸용" data-commit="2026-03-29">
+<div class="top"><span class="no">06</span><h3>옥내+간이 겸용</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 102·103A</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-29 <span class="b d">방치 129일</span></dd>
+<dt>저장소</dt><dd>combo-easy-fire-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/combo-easy-fire-calc" target="_blank" rel="noopener">manminkim-eng.github.io/combo-easy-fire-calc</a></dd>
+</dl>
+<p class="note">카드 1.0(가이드) &lt; 소스 3.x</p>
+</article><article class="it stale" data-f="소방" data-s="제연설비 smoke-control-system nftc 501 일치(3.0) 소방" data-gap="129" data-no="09" data-name="제연설비" data-commit="2026-03-29">
+<div class="top"><span class="no">09</span><h3>제연설비</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 501</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 3.0</dd>
+<dt>최종커밋</dt><dd>2026-03-29 <span class="b d">방치 129일</span></dd>
+<dt>저장소</dt><dd>Smoke-Control-System</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Smoke-Control-System" target="_blank" rel="noopener">manminkim-eng.github.io/Smoke-Control-System</a></dd>
+</dl>
+<p class="note">일치(3.0)</p>
+</article><article class="it stale" data-f="기계설비" data-s="설비펌프 booster-pump 기계설비법 일치(2.0) 기계설비" data-gap="129" data-no="24" data-name="설비펌프" data-commit="2026-03-29">
+<div class="top"><span class="no">24</span><h3>설비펌프</h3><span class="fld">기계설비</span></div>
+<p class="law">기계설비법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-29 <span class="b d">방치 129일</span></dd>
+<dt>저장소</dt><dd>Booster-Pump</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Booster-Pump" target="_blank" rel="noopener">manminkim-eng.github.io/Booster-Pump</a></dd>
+</dl>
+<p class="note">일치(2.0)</p>
+</article><article class="it stale" data-f="토목" data-s="토목배관(우수·오수) civil-engineering-piping 매닝공식·swmm 일치(2.0) 토목" data-gap="129" data-no="50" data-name="토목배관(우수·오수)" data-commit="2026-03-29">
+<div class="top"><span class="no">50</span><h3>토목배관(우수·오수)</h3><span class="fld">토목</span></div>
+<p class="law">매닝공식·SWMM</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-29 <span class="b d">방치 129일</span></dd>
+<dt>저장소</dt><dd>civil-engineering-piping</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/civil-engineering-piping" target="_blank" rel="noopener">manminkim-eng.github.io/civil-engineering-piping</a></dd>
+</dl>
+<p class="note">일치(2.0)</p>
+</article><article class="it stale" data-f="기계설비" data-s="건물우수(우수관경) roof-drain 건축물 설비기준 로컬↔배포 동기화 완료(2026-06-09); 일치(2.0) 기계설비" data-gap="128" data-no="20" data-name="건물우수(우수관경)" data-commit="2026-03-30">
+<div class="top"><span class="no">20</span><h3>건물우수(우수관경)</h3><span class="fld">기계설비</span></div>
+<p class="law">건축물 설비기준</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-30 <span class="b d">방치 128일</span></dd>
+<dt>저장소</dt><dd>Roof-Drain</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Roof-Drain" target="_blank" rel="noopener">manminkim-eng.github.io/Roof-Drain</a></dd>
+</dl>
+<p class="note">로컬↔배포 동기화 완료(2026-06-09); 일치(2.0)</p>
+</article><article class="it stale" data-f="기계설비" data-s="위생배관 sanitary-piping-system 헌터곡선·하젠윌리엄스 일치(2.0) 기계설비" data-gap="128" data-no="21" data-name="위생배관" data-commit="2026-03-30">
+<div class="top"><span class="no">21</span><h3>위생배관</h3><span class="fld">기계설비</span></div>
+<p class="law">헌터곡선·하젠윌리엄스</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-30 <span class="b d">방치 128일</span></dd>
+<dt>저장소</dt><dd>Sanitary-Piping-System</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Sanitary-Piping-System" target="_blank" rel="noopener">manminkim-eng.github.io/Sanitary-Piping-System</a></dd>
+</dl>
+<p class="note">일치(2.0)</p>
+</article><article class="it stale" data-f="건축행정" data-s="성능지표(epi) energy-performance-index 에너지절약설계기준 일치(3.0) 건축행정" data-gap="128" data-no="39" data-name="성능지표(EPI)" data-commit="2026-03-30">
+<div class="top"><span class="no">39</span><h3>성능지표(EPI)</h3><span class="fld">건축행정</span></div>
+<p class="law">에너지절약설계기준</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 3.0</dd>
+<dt>최종커밋</dt><dd>2026-03-30 <span class="b d">방치 128일</span></dd>
+<dt>저장소</dt><dd>Energy-Performance-Index</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Energy-Performance-Index" target="_blank" rel="noopener">manminkim-eng.github.io/Energy-Performance-Index</a></dd>
+</dl>
+<p class="note">일치(3.0)</p>
+</article><article class="it stale" data-f="토목" data-s="토목옹벽 tomog-ongbyeog kds·kr 일치(2.0); 폴더명 표준화 완료(2026-06-09, 버번→버전s) 토목" data-gap="128" data-no="51" data-name="토목옹벽" data-commit="2026-03-30">
+<div class="top"><span class="no">51</span><h3>토목옹벽</h3><span class="fld">토목</span></div>
+<p class="law">KDS·KR</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-03-30 <span class="b d">방치 128일</span></dd>
+<dt>저장소</dt><dd>tomog-ongbyeog</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/tomog-ongbyeog" target="_blank" rel="noopener">manminkim-eng.github.io/tomog-ongbyeog</a></dd>
+</dl>
+<p class="note">일치(2.0); 폴더명 표준화 완료(2026-06-09, 버번→버전s)</p>
+</article><article class="it stale" data-f="소방" data-s="발전설비(비상발전기) emergency-generator kds·nftc 일치(3.0) 소방" data-gap="127" data-no="10" data-name="발전설비(비상발전기)" data-commit="2026-03-31">
+<div class="top"><span class="no">10</span><h3>발전설비(비상발전기)</h3><span class="fld">소방</span></div>
+<p class="law">KDS·NFTC</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 3.0</dd>
+<dt>최종커밋</dt><dd>2026-03-31 <span class="b d">방치 127일</span></dd>
+<dt>저장소</dt><dd>Emergency-Generator</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Emergency-Generator" target="_blank" rel="noopener">manminkim-eng.github.io/Emergency-Generator</a></dd>
+</dl>
+<p class="note">일치(3.0)</p>
+</article><article class="it stale" data-f="건축행정" data-s="일조사선 architectural-line 건축법 일조권 폴더 2.0 vs 타이틀·카드 1.0 — 버전표기 정합 필요 건축행정" data-gap="127" data-no="38" data-name="일조사선" data-commit="2026-03-31">
+<div class="top"><span class="no">38</span><h3>일조사선</h3><span class="fld">건축행정</span></div>
+<p class="law">건축법 일조권</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0/1.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-03-31 <span class="b d">방치 127일</span></dd>
+<dt>저장소</dt><dd>Architectural-line</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Architectural-line" target="_blank" rel="noopener">manminkim-eng.github.io/Architectural-line</a></dd>
+</dl>
+<p class="note">폴더 2.0 vs 타이틀·카드 1.0 — 버전표기 정합 필요</p>
+</article><article class="it stale" data-f="소방" data-s="통합 포털 portal - 포털(허브) — 버전표기 없음, 정상 소방" data-gap="126" data-no="08" data-name="통합 포털" data-commit="2026-04-01">
+<div class="top"><span class="no">08</span><h3>통합 포털</h3><span class="fld">소방</span></div>
+<p class="law">-</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 -</dd>
+<dt>최종커밋</dt><dd>2026-04-01 <span class="b d">방치 126일</span></dd>
+<dt>저장소</dt><dd>portal</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/portal" target="_blank" rel="noopener">manminkim-eng.github.io/portal</a></dd>
+</dl>
+<p class="note">포털(허브) — 버전표기 없음, 정상</p>
+</article><article class="it stale" data-f="건축행정" data-s="주차장법 parking-lot-act 주차장법 일치(1.0) 건축행정" data-gap="123" data-no="40" data-name="주차장법" data-commit="2026-04-04">
+<div class="top"><span class="no">40</span><h3>주차장법</h3><span class="fld">건축행정</span></div>
+<p class="law">주차장법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-04-04 <span class="b d">방치 123일</span></dd>
+<dt>저장소</dt><dd>Parking-Lot-Act</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Parking-Lot-Act" target="_blank" rel="noopener">manminkim-eng.github.io/Parking-Lot-Act</a></dd>
+</dl>
+<p class="note">일치(1.0)</p>
+</article><article class="it stale" data-f="기계설비" data-s="급탕설비 hot-water-supply-system 기계설비법 일치(2.0); 타이틀 버전표기 누락 기계설비" data-gap="104" data-no="25" data-name="급탕설비" data-commit="2026-04-23">
+<div class="top"><span class="no">25</span><h3>급탕설비</h3><span class="fld">기계설비</span></div>
+<p class="law">기계설비법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-04-23 <span class="b d">방치 104일</span></dd>
+<dt>저장소</dt><dd>Hot-Water-Supply-System</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Hot-Water-Supply-System" target="_blank" rel="noopener">manminkim-eng.github.io/Hot-Water-Supply-System</a></dd>
+</dl>
+<p class="note">일치(2.0); 타이틀 버전표기 누락</p>
+</article><article class="it stale" data-f="건축행정" data-s="건축상주감리 arch-supervision 건축법·대가기준 카드 1.0 &lt; 소스 3.0 건축행정" data-gap="92" data-no="33" data-name="건축상주감리" data-commit="2026-05-05">
+<div class="top"><span class="no">33</span><h3>건축상주감리</h3><span class="fld">건축행정</span></div>
+<p class="law">건축법·대가기준</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-05-05 <span class="b d">방치 92일</span></dd>
+<dt>저장소</dt><dd>arch-supervision</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/arch-supervision" target="_blank" rel="noopener">manminkim-eng.github.io/arch-supervision</a></dd>
+</dl>
+<p class="note">카드 1.0 &lt; 소스 3.0</p>
+</article><article class="it" data-f="소방" data-s="옥외소화전 outdoor-hydrant-calc nftc 109 카드 1.0(가이드) &lt; 소스 3.x 소방" data-gap="48" data-no="02" data-name="옥외소화전" data-commit="2026-06-18">
+<div class="top"><span class="no">02</span><h3>옥외소화전</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 109</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-06-18 <span class="b ok">48일 경과</span></dd>
+<dt>저장소</dt><dd>outdoor-hydrant-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/outdoor-hydrant-calc" target="_blank" rel="noopener">manminkim-eng.github.io/outdoor-hydrant-calc</a></dd>
+</dl>
+<p class="note">카드 1.0(가이드) &lt; 소스 3.x</p>
+</article><article class="it" data-f="소방" data-s="간이스프링클러 simple-sprinkler-calc nftc 103a 카드 1.0(가이드) &lt; 소스 3.x 소방" data-gap="48" data-no="04" data-name="간이스프링클러" data-commit="2026-06-18">
+<div class="top"><span class="no">04</span><h3>간이스프링클러</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 103A</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-06-18 <span class="b ok">48일 경과</span></dd>
+<dt>저장소</dt><dd>simple-sprinkler-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/simple-sprinkler-calc" target="_blank" rel="noopener">manminkim-eng.github.io/simple-sprinkler-calc</a></dd>
+</dl>
+<p class="note">카드 1.0(가이드) &lt; 소스 3.x</p>
+</article><article class="it" data-f="건축행정" data-s="열관류율 u-value-app- kds 41·에너지절약기준 운영본 ver3.1(rts연결) 명기(2026-06-09); 카드 2.0 &lt; 운영 3.1; 저장소명 끝 하이픈 건축행정" data-gap="48" data-no="31" data-name="열관류율" data-commit="2026-06-18">
+<div class="top"><span class="no">31</span><h3>열관류율</h3><span class="fld">건축행정</span></div>
+<p class="law">KDS 41·에너지절약기준</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.1(운영) / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-06-18 <span class="b ok">48일 경과</span></dd>
+<dt>저장소</dt><dd>u-value-app-</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/u-value-app-" target="_blank" rel="noopener">manminkim-eng.github.io/u-value-app-</a></dd>
+</dl>
+<p class="note">운영본 Ver3.1(RTS연결) 명기(2026-06-09); 카드 2.0 &lt; 운영 3.1; 저장소명 끝 하이픈</p>
+</article><article class="it" data-f="구조" data-s="설계하중 architectural-structure kds 41 일치(1.0) 구조" data-gap="48" data-no="46" data-name="설계하중" data-commit="2026-06-18">
+<div class="top"><span class="no">46</span><h3>설계하중</h3><span class="fld">구조</span></div>
+<p class="law">KDS 41</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-06-18 <span class="b ok">48일 경과</span></dd>
+<dt>저장소</dt><dd>architectural-structure</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/architectural-structure" target="_blank" rel="noopener">manminkim-eng.github.io/architectural-structure</a></dd>
+</dl>
+<p class="note">일치(1.0)</p>
+</article><article class="it" data-f="소방" data-s="옥내소화전 fire-hydrant-calc nftc 102 카드 ver1.0→2.0(가이드) &lt; 소스 ver3.x 소방" data-gap="27" data-no="01" data-name="옥내소화전" data-commit="2026-07-09">
+<div class="top"><span class="no">01</span><h3>옥내소화전</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 102</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0→2.0</dd>
+<dt>최종커밋</dt><dd>2026-07-09 <span class="b ok">27일 경과</span></dd>
+<dt>저장소</dt><dd>fire-hydrant-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/fire-hydrant-calc" target="_blank" rel="noopener">manminkim-eng.github.io/fire-hydrant-calc</a></dd>
+</dl>
+<p class="note">카드 Ver1.0→2.0(가이드) &lt; 소스 Ver3.x</p>
+</article><article class="it" data-f="소방" data-s="스프링클러 fire-sprinkler-calc nftc 103 카드 1.0(가이드) &lt; 소스 3.x 소방" data-gap="27" data-no="03" data-name="스프링클러" data-commit="2026-07-09">
+<div class="top"><span class="no">03</span><h3>스프링클러</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 103</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-07-09 <span class="b ok">27일 경과</span></dd>
+<dt>저장소</dt><dd>fire-sprinkler-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/fire-sprinkler-calc" target="_blank" rel="noopener">manminkim-eng.github.io/fire-sprinkler-calc</a></dd>
+</dl>
+<p class="note">카드 1.0(가이드) &lt; 소스 3.x</p>
+</article><article class="it" data-f="소방" data-s="옥내+옥외 겸용 combo-indoor-outdoor-calc nftc 102·109 카드 1.0(가이드) &lt; 소스 3.x 소방" data-gap="27" data-no="07" data-name="옥내+옥외 겸용" data-commit="2026-07-09">
+<div class="top"><span class="no">07</span><h3>옥내+옥외 겸용</h3><span class="fld">소방</span></div>
+<p class="law">NFTC 102·109</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-07-09 <span class="b ok">27일 경과</span></dd>
+<dt>저장소</dt><dd>combo-indoor-outdoor-calc</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/combo-indoor-outdoor-calc" target="_blank" rel="noopener">manminkim-eng.github.io/combo-indoor-outdoor-calc</a></dd>
+</dl>
+<p class="note">카드 1.0(가이드) &lt; 소스 3.x</p>
+</article><article class="it" data-f="기계설비" data-s="환기설비 ventilation-equipment 기계설비법 일치(2.0) 기계설비" data-gap="27" data-no="26" data-name="환기설비" data-commit="2026-07-09">
+<div class="top"><span class="no">26</span><h3>환기설비</h3><span class="fld">기계설비</span></div>
+<p class="law">기계설비법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 2.0</dd>
+<dt>최종커밋</dt><dd>2026-07-09 <span class="b ok">27일 경과</span></dd>
+<dt>저장소</dt><dd>ventilation-equipment</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/ventilation-equipment" target="_blank" rel="noopener">manminkim-eng.github.io/ventilation-equipment</a></dd>
+</dl>
+<p class="note">일치(2.0)</p>
+</article><article class="it" data-f="구조" data-s="내진성능 seismic-evaluation kds 41 17 00 카드 1.0 &lt; 소스 2.0 — 카드 버전 갱신 필요 구조" data-gap="27" data-no="45" data-name="내진성능" data-commit="2026-07-09">
+<div class="top"><span class="no">45</span><h3>내진성능</h3><span class="fld">구조</span></div>
+<p class="law">KDS 41 17 00</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-07-09 <span class="b ok">27일 경과</span></dd>
+<dt>저장소</dt><dd>Seismic-Evaluation</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Seismic-Evaluation" target="_blank" rel="noopener">manminkim-eng.github.io/Seismic-Evaluation</a></dd>
+</dl>
+<p class="note">카드 1.0 &lt; 소스 2.0 — 카드 버전 갱신 필요</p>
+</article><article class="it" data-f="건축행정" data-s="공공기관 대가산출 1architect-fee-app 공공발주 대가기준 카드 1.0 &lt; 소스 3.0(운영); v2.0/v3.0 폴더 공존 건축행정" data-gap="20" data-no="30" data-name="공공기관 대가산출" data-commit="2026-07-16">
+<div class="top"><span class="no">30</span><h3>공공기관 대가산출</h3><span class="fld">건축행정</span></div>
+<p class="law">공공발주 대가기준</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 2.0/3.0 / 카드 1.0</dd>
+<dt>최종커밋</dt><dd>2026-07-16 <span class="b ok">20일 경과</span></dd>
+<dt>저장소</dt><dd>1architect-fee-app</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/1architect-fee-app" target="_blank" rel="noopener">manminkim-eng.github.io/1architect-fee-app</a></dd>
+</dl>
+<p class="note">카드 1.0 &lt; 소스 3.0(운영); v2.0/v3.0 폴더 공존</p>
+</article><article class="it" data-f="기계설비" data-s="부하계산(rts) radiant-time-series-method kds·ashrae 일치(3.0) 기계설비" data-gap="9" data-no="27" data-name="부하계산(RTS)" data-commit="2026-07-27">
+<div class="top"><span class="no">27</span><h3>부하계산(RTS)</h3><span class="fld">기계설비</span></div>
+<p class="law">KDS·ASHRAE</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 3.0 / 카드 3.0</dd>
+<dt>최종커밋</dt><dd>2026-07-27 <span class="b ok">9일 경과</span></dd>
+<dt>저장소</dt><dd>Radiant-Time-Series-Method</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/Radiant-Time-Series-Method" target="_blank" rel="noopener">manminkim-eng.github.io/Radiant-Time-Series-Method</a></dd>
+</dl>
+<p class="note">일치(3.0)</p>
+</article><article class="it" data-f="법규" data-s="manmin legal review manmin-law 건축법·nftc·kds 등 월간 법령개정 정리 pwa — 2026-08-04 신규 법규" data-gap="1" data-no="60" data-name="MANMIN LEGAL REVIEW" data-commit="2026-08-04">
+<div class="top"><span class="no">60</span><h3>MANMIN LEGAL REVIEW</h3><span class="fld">법규</span></div>
+<p class="law">건축법·NFTC·KDS 등</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 -</dd>
+<dt>최종커밋</dt><dd>2026-08-04 <span class="b ok">1일 경과</span></dd>
+<dt>저장소</dt><dd>manmin-law</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/manmin-law" target="_blank" rel="noopener">manminkim-eng.github.io/manmin-law</a></dd>
+</dl>
+<p class="note">월간 법령개정 정리 PWA — 2026-08-04 신규</p>
+</article><article class="it" data-f="플랫폼" data-s="kimmanmin 통합 홈페이지 kimmanmin - 엔지니어링 플랫폼 본체 — 전 wap 카드 허브 플랫폼" data-gap="0" data-no="00" data-name="KIMMANMIN 통합 홈페이지" data-commit="2026-08-05">
+<div class="top"><span class="no">00</span><h3>KIMMANMIN 통합 홈페이지</h3><span class="fld">플랫폼</span></div>
+<p class="law">-</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 - / 카드 -</dd>
+<dt>최종커밋</dt><dd>2026-08-05 <span class="b ok">0일 경과</span></dd>
+<dt>저장소</dt><dd>KIMMANMIN</dd>
+<dt>배포</dt><dd><a href="https://manminkim-eng.github.io/KIMMANMIN" target="_blank" rel="noopener">manminkim-eng.github.io/KIMMANMIN</a></dd>
+</dl>
+<p class="note">엔지니어링 플랫폼 본체 — 전 WAP 카드 허브</p>
+</article><article class="it" data-f="건축행정" data-s="건축행정(인허가 체크리스트) 미배포(확인필요) 건축법 ★홈페이지 미등록·github 미배포(확인필요) 건축행정" data-gap="-1" data-no="37" data-name="건축행정(인허가 체크리스트)" data-commit="-">
+<div class="top"><span class="no">37</span><h3>건축행정(인허가 체크리스트)</h3><span class="fld">건축행정</span></div>
+<p class="law">건축법</p>
+<dl class="kv">
+<dt>버전</dt><dd>소스 1.0 / 카드 없음</dd>
+<dt>최종커밋</dt><dd>- <span class="b d">GitHub 미등록</span></dd>
+<dt>저장소</dt><dd>미배포(확인필요)</dd>
+<dt>배포</dt><dd>미배포</dd>
+</dl>
+<p class="note">★홈페이지 미등록·GitHub 미배포(확인필요)</p>
+</article>
+</div>
+<div class="empty" id="empty" hidden>검색 결과가 없습니다.</div>
+
+
+</div>
+
+
+
+
+<footer>
+ <span class="lg"><img src="assets/manmin-logo.jpg" alt="MANMIN"></span>
+ ㈜대성건축사사무소 · 건축사 김만민 (#20072) · 국제공인 가치공학 전문가(CVS·VMP)<br>
+ 전북 익산 · manminkim-eng · MANMIN VER-1.0 · 기준일 2026-08-05<br>데스크톱판: wap-registry.html
+</footer>
+</div>
+<script>
+(function(){var k=document.body.getAttribute('data-mm')||'',a=document.querySelectorAll('.mm-links a');
+for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute('aria-current','page');}})();
+</script>
+<script>
+(function(){
+  var list=document.getElementById('list');
+  var items=[].slice.call(list.getElementsByClassName('it'));
+  var tools=document.getElementById('tools');
+  var cnt=document.getElementById('cnt');
+  var empty=document.getElementById('empty');
+  var q=document.getElementById('q');
+  if(!items.length) return;
+  tools.hidden=false;                      /* JS 되는 환경에서만 도구 노출 */
+  var cur='전체', kw='', sort='gap';
+
+  function apply(){
+    var n=0;
+    for(var i=0;i<items.length;i++){
+      var el=items[i];
+      var ok=(cur==='전체'||el.getAttribute('data-f')===cur);
+      if(ok&&kw) ok=el.getAttribute('data-s').indexOf(kw)>=0;
+      el.hidden=!ok; if(ok) n++;
+    }
+    cnt.textContent=n+'건';
+    empty.hidden=n>0;
+  }
+  function order(){
+    var a=items.slice();
+    if(sort==='gap') a.sort(function(x,y){return (+y.getAttribute('data-gap'))-(+x.getAttribute('data-gap'));});
+    else if(sort==='recent') a.sort(function(x,y){return y.getAttribute('data-commit')<x.getAttribute('data-commit')?-1:1;});
+    else if(sort==='no') a.sort(function(x,y){return x.getAttribute('data-no')>y.getAttribute('data-no')?1:-1;});
+    else a.sort(function(x,y){return x.getAttribute('data-name').localeCompare(y.getAttribute('data-name'),'ko');});
+    for(var i=0;i<a.length;i++) list.appendChild(a[i]);
+  }
+  function pick(box,btn){
+    var bs=box.getElementsByClassName('chip');
+    for(var i=0;i<bs.length;i++) bs[i].className='chip'+(bs[i]===btn?' on':'');
+  }
+  function handler(box,fn){
+    var f=function(ev){
+      var t=ev.target;
+      while(t&&t!==box&&t.className.indexOf('chip')<0) t=t.parentNode;   /* closest 미지원 대비 */
+      if(!t||t===box) return;
+      ev.preventDefault(); pick(box,t); fn(t);
+    };
+    box.addEventListener('click',f,false);
+    box.addEventListener('touchend',f,false);                            /* click 미발화 WebView 대비 */
+  }
+  handler(document.getElementById('chips'),function(t){cur=t.getAttribute('data-f');apply();});
+  handler(document.getElementById('sorts'),function(t){sort=t.getAttribute('data-s');order();});
+
+  function read(){ kw=(q.value||'').toLowerCase().trim(); apply(); }
+  q.addEventListener('input',read,false);
+  q.addEventListener('keyup',read,false);                                /* 한글 IME 조합 중 input 미발화 대비 */
+  q.addEventListener('compositionend',read,false);
+  q.addEventListener('change',read,false);
+  setInterval(function(){ if((q.value||'').toLowerCase().trim()!==kw) read(); },400);  /* 최후 폴백 */
+})();
+</script></body>
+</html>
