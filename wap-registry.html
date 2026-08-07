@@ -69,12 +69,14 @@
 <h2>6. 운영 방법 (권고)</h2>
   <ul class="tight">
     <li><b>단일 대장 + 스냅샷</b> — 본 대장이 살아있는 정본(常時 갱신). 각 분기 정밀검토 보고서는 그 시점 스냅샷으로 <code>outputs\reports\</code>에 보관.</li>
-    <li><b>데이터 기반 구조</b> — 표·이력은 <code>assets/data.js</code> 단일 소스에서 렌더링됩니다. 분기마다 <code>changelog</code>에 항목 추가 + <code>waps</code> 상태·버전 갱신 → 재배포.</li>
+    <li><b>데이터 기반 구조</b> — 본 파일은 하단 <code>DATA</code>(JSON)만 갱신하면 표·이력이 자동 렌더링됩니다. 분기마다 <code>changelog</code>에 항목 추가 + <code>waps</code> 상태·버전 갱신 → 재배포.</li>
     <li><b>기준↔WAP 매핑</b> — 기준 개정 시 baseline의 고시번호를 바꾸면, 해당 기준을 쓰는 WAP만 골라 업그레이드(영향 최소화·누락 방지).</li>
     <li><b>커밋 추적성</b> — 각 변경 이력에 GitHub 커밋 해시를 남겨 배포본과 1:1 대응.</li>
     <li><b>형상 체크포인트</b> — 매 회차: React계 CDN 버전 고정 / Cache-First sw.js CACHE_NAME 상향 / 버전표기 <code>[MANMIN-VerX.Y]</code> 통일.</li>
     <li><b>자동화</b> — 분기 스케줄이 baseline 대조 → 변경 있으면 대장·보고서 갱신안 생성 → 승인 후 배포.</li>
   </ul>
+
+
 
 <footer>
  <span class="lg"><img src="assets/manmin-logo.jpg" alt="MANMIN"></span>

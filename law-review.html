@@ -16,61 +16,9 @@
 <meta name="apple-mobile-web-app-title" content="MANMIN 허브">
 <meta name="application-name" content="MANMIN 허브">
 
-<style id="legacy">
-  :root{
-    --navy:#14304f; --teal:#1f7a6b; --gold:#b8863b;
-    --line:#d9dee4; --bg:#f4f6f8; --ink:#1c2530; --sub:#5b6672;
-    --red:#c0392b; --amber:#c98a12; --green:#2e7d4f; --gray:#7a8794;
-  }
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:'Malgun Gothic','Noto Sans KR',sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px 22px 80px;}
-  header.doc{background:var(--navy);color:#fff;border-radius:12px;padding:26px 30px;margin-bottom:22px;}
-  header.doc .kicker{font-size:12.5px;letter-spacing:.14em;color:#9fc4bd;margin:0 0 8px;}
-  header.doc h1{font-size:23px;margin:0 0 12px;line-height:1.35;}
-  header.doc .meta{font-size:13px;color:#c9d4de;display:flex;flex-wrap:wrap;gap:6px 22px;border-top:1px solid rgba(255,255,255,.18);padding-top:12px;}
-  header.doc .meta b{color:#fff;font-weight:600;}
-  section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:18px;}
-  h2{font-size:18px;color:var(--navy);border-left:5px solid var(--teal);padding-left:12px;margin:4px 0 16px;}
-  h3{font-size:15px;color:var(--navy);margin:22px 0 8px;}
-  p{margin:8px 0;}
-  .lead{font-size:14.5px;color:var(--sub);}
-  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0 6px;}
-  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;}
-  th{background:#eef2f5;color:var(--navy);font-weight:600;font-size:12.5px;}
-  td.c,th.c{text-align:center;white-space:nowrap;}
-  tr:nth-child(even) td{background:#fafbfc;}
-  .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;white-space:nowrap;}
-  .done{background:var(--green);} .none{background:var(--gray);} .hold{background:var(--amber);} .block{background:var(--red);}
-  .pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:5px;border:1px solid var(--line);background:#f6f8fa;color:var(--sub);}
-  .ok{color:var(--green);font-weight:700;} .warn{color:var(--amber);font-weight:700;} .bad{color:var(--red);font-weight:700;}
-  code{background:#eef2f5;padding:1px 5px;border-radius:4px;font-size:12px;}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:6px 0 4px;}
-  .card{border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center;background:#fbfcfd;}
-  .card .n{font-size:26px;font-weight:800;color:var(--navy);line-height:1;}
-  .card .l{font-size:12px;color:var(--sub);margin-top:6px;}
-  .callout{border-left:4px solid var(--gold);background:#fbf6ec;border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0;font-size:13.5px;}
-  .callout.red{border-color:var(--red);background:#fbecea;}
-  .callout.green{border-color:var(--green);background:#eaf5ee;}
-  ul.tight{margin:8px 0;padding-left:20px;} ul.tight li{margin:5px 0;font-size:13.5px;}
-  .src{font-size:11.5px;color:var(--gray);word-break:break-all;}
-  footer.doc{font-size:12px;color:var(--sub);text-align:center;padding:20px 0 0;}
-  /* PDF 인쇄 버튼 */
-  #printBtn{position:fixed;right:22px;bottom:22px;z-index:999;background:var(--navy);color:#fff;border:none;
-    border-radius:30px;padding:13px 22px;font-size:14px;font-weight:700;box-shadow:0 6px 18px rgba(20,48,79,.35);
-    cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:8px;}
-  #printBtn:hover{background:#1d4266;}
-  #printBtn svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2;}
-  @media print{
-    body{background:#fff;} .wrap{max-width:none;padding:0;}
-    section,header.doc{break-inside:avoid;box-shadow:none;}
-    header.doc{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    #printBtn{display:none !important;}
-    @page{size:A4;margin:14mm;}
-  }
-</style>
 <link rel="stylesheet" href="assets/manmin.css">
 <style>:root{--accent:#B0453A;--accent-d:#8C3529;}</style>
+<script src="assets/manmin.js" defer></script>
 </head>
 <body data-mm="law">
 <div class="wrap">
@@ -79,28 +27,24 @@
    <img src="assets/manmin-logo.jpg" alt="MANMIN">
    <b>MANMIN<span>INTEGRATED MGMT</span></b>
  </a>
- <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a><span class="sep"></span><a href="wap-registry-mobile.html" data-k="mob">대장 · 모바일</a></nav>
- <button type="button" class="mm-install" id="mm-install" hidden>＋ 앱 설치</button>
- <button type="button" class="mm-print" onclick="window.print()">인쇄 · PDF</button>
+ <nav class="mm-links"><a href="index.html" data-k="hub">허브</a><a href="repo-audit.html" data-k="repo">저장소 전수분류</a><a href="wap-registry.html" data-k="reg">WAP 통합관리대장</a><a href="law-review.html" data-k="law">법규·기술기준 검토</a></nav>
+ <div class="mm-actions">
+  <button type="button" class="mm-install" id="mm-install" hidden>＋ 설치</button>
+  <button type="button" class="mm-print" onclick="window.print()">인쇄</button>
+ </div>
 </div>
+
 <header class="mm-head">
  <div class="mm-logo"><img src="assets/manmin-logo.jpg" alt="ARCHITECT KIM MANMIN"></div>
  <div class="txt">
   <p class="mm-kicker">MANMIN ENGINEERING · LEGAL &amp; TECHNICAL REVIEW</p>
   <h1>WAP 법규·기술기준 정밀검토</h1>
   <p class="sub">baseline 2026-07-09 · 재조사 추록 2026-08-05</p>
-  <div class="mm-ver">MANMIN VER-1.0</div>
+  <div class="mm-ver">MANMIN VER-1.1</div>
  </div>
 </header>
 
-
-
-<div class="wrap">
-
-
-
-<section>
-  <h2>1. 재검증 개요 및 종합 결론</h2>
+<h2>1. 재검증 개요 및 종합 결론</h2>
   <p class="lead">1차 보고서는 배포 페이지를 외부에서 수집(WebFetch)해 판정했으나, MANMIN WAP은 React/JS로 <b>계산 로직·법령 근거가 클라이언트에서 렌더링</b>되어 외부 수집만으로는 내장 상태가 정확히 보이지 않았습니다. 이에 승인해주신 5종 전부를 <b>저장소 원본 소스를 직접 내려받아(clone) 코드 레벨에서 재대조</b>하였습니다.</p>
 
   <div class="grid">
@@ -116,11 +60,9 @@
   <div class="callout red">
     <b>GitHub 배포 제약.</b> 현재 작업 세션에는 이 저장소들에 대한 <b>GitHub 쓰기(push) 권한이 활성화되어 있지 않습니다</b>(읽기·clone은 가능). 수정본은 <b>로컬 폴더에 저장</b>했으며, 실제 배포는 아래 6장의 방법으로 사용자님 조치가 필요합니다.
   </div>
-</section>
 
-<section>
-  <h2>2. 승인 5종 재검증 결과</h2>
-  <table>
+<h2>2. 승인 5종 재검증 결과</h2>
+  <div class="tw"><table>
     <thead><tr><th>WAP</th><th>원본 확인 결과</th><th>조치</th><th class="c">상태</th></tr></thead>
     <tbody>
       <tr>
@@ -154,13 +96,11 @@
         <td class="c"><span class="tag hold">판단보류</span></td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
   <p style="font-size:12px;color:var(--sub)">※ 무추측 원칙(불확실 시 검색 확인 후 반영)에 따라, 근거 조문이 확정되지 않은 「환기」는 오히려 잘못된 인용을 넣지 않도록 현행 유지했습니다.</p>
-</section>
 
-<section>
-  <h2>3. 내진 앱 수정 내역 (항목 · 기존 · 변경)</h2>
-  <table>
+<h2>3. 내진 앱 수정 내역 (항목 · 기존 · 변경)</h2>
+  <div class="tw"><table>
     <thead><tr><th>위치</th><th>기존</th><th>변경</th></tr></thead>
     <tbody>
       <tr><td>헤더 부제</td><td>KDS 41 17 00 : 2018</td><td>KDS 41 17 00 : 2022</td></tr>
@@ -170,13 +110,11 @@
       <tr><td>하단 근거</td><td>KDS 41 17 00 (2018.12.31)</td><td>KDS 41 17 00 (2022.10.11)</td></tr>
       <tr><td>버전·캐시</td><td>Ver 2.0 / naejin-v2.0.0</td><td>Ver 2.1 / naejin-v2.1.0</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p style="font-size:13px;color:var(--sub)">내진설계 <b>의무대상 판정 로직</b>(건축법 시행령 제32조 규모 기준)은 현행과 정합하여 변경하지 않았습니다. 수정은 법령 근거 표기 정정에 한정됩니다.</p>
-</section>
 
-<section>
-  <h2>4. 분야별 최신 기준 근거표 (baseline · 2026-07-09)</h2>
-  <table>
+<h2>4. 분야별 최신 기준 근거표 (baseline · 2026-07-09)</h2>
+  <div class="tw"><table>
     <thead><tr><th>분야</th><th>기준</th><th class="c">현행 고시/공고</th><th class="c">시행일</th><th>계산영향</th></tr></thead>
     <tbody>
       <tr><td>소방체계</td><td>NFSC→NFPC(성능)+NFTC(기술)</td><td class="c">—</td><td class="c">2022-12-01</td><td>계산도구는 NFTC 1차근거</td></tr>
@@ -193,12 +131,10 @@
       <tr><td>기계</td><td>기계설비 기술기준 [별표8]</td><td class="c">국토부 제2021-851호</td><td class="c">2021 현행</td><td>없음(별표 원문 재확인 권장)</td></tr>
       <tr><td>기계</td><td>설비기준규칙 제11조 환기(공동주택)</td><td class="c">국토부령 제1531호</td><td class="c">2025-10-31</td><td>30세대·0.5회/h(용도별 환기 소관 조문은 확인 필요)</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p class="src">출처: 국가법령정보센터(law.go.kr), 국가건설기준센터(kcsc.re.kr) KDS 뷰어, 국토교통부·소방청·국립소방연구원 고시/공고, 대한건축사협회·건축 전문지 보도(제86조 9→10m). 인·허가 적용 시 원문 부칙 시행일 직접 대조 권장.</p>
-</section>
 
-<section>
-  <h2>5. 분기 정기검토 운영</h2>
+<h2>5. 분기 정기검토 운영</h2>
   <p>제4장 근거표를 <b>「기준↔WAP 매핑 대장」의 기준선</b>으로 삼아, 분기마다 개정분만 대조합니다. 자동 스케줄(분기 1회, 다음 실행 <b>2026-10-01</b>)이 등록되어 있으며, 매 회차는 아래 상시 체크포인트를 함께 점검합니다.</p>
   <div class="callout">
     <b>상시 형상관리 체크포인트.</b> ① React계 WAP의 CDN(Babel/React) <b>버전 고정</b> 유지 — 빈화면 1차 원인. ② Cache-First sw.js는 index.html 교체 시 <b>CACHE_NAME 상향</b> 필수. ③ 폴더·파일·타이틀 <b>버전 표기 통일</b>(<code>[MANMIN-VerX.Y]</code>).
@@ -206,15 +142,13 @@
   <div class="callout">
     <b>검토 방법 교훈(중요).</b> MANMIN WAP은 계산 로직이 JS에 내장되어, <b>외부 수집(WebFetch) 판정은 오탐 위험</b>이 큽니다. 정밀검토는 반드시 <b>저장소 원본을 clone하여 코드 레벨</b>에서 대조합니다.
   </div>
-</section>
 
-<section>
-  <h2>6. GitHub 배포 — 완료 <span style="font-size:12px;font-weight:400;color:#5b6672">(2026-08-07 상태 갱신)</span></h2>
+<h2>6. GitHub 배포 — 완료 <span style="font-size:12px;font-weight:400;color:#5b6672">(2026-08-07 상태 갱신)</span></h2>
   <div style="background:#e4f1e9;border-left:4px solid #2e7d4f;border-radius:8px;padding:12px 15px;margin:10px 0;font-size:13px">
     <b>배포 완료.</b> 본 절은 작성 당시(2026-07-09) 세션 권한 제약으로 「사용자 조치 필요」 상태였으나,
     <b>2026-08-07 재확인 결과 내진 앱 수정본이 이미 배포되어 있습니다.</b> 아래 검증 항목이 모두 충족되어 절 내용을 완료 상태로 갱신합니다.
   </div>
-  <table>
+  <div class="tw"><table>
     <thead><tr><th>검증 항목</th><th>기준</th><th>2026-08-07 실측</th><th>판정</th></tr></thead>
     <tbody>
       <tr><td>저장소</td><td>manminkim-eng/Seismic-Evaluation</td><td>최종커밋 <code>91649af</code> · 2026-07-09<br>"Update version from 2.0 to 2.1 in index.html"</td><td>반영</td></tr>
@@ -222,16 +156,14 @@
       <tr><td>기준 표기</td><td>KDS 41 17 00 : 2022</td><td><b>KDS 41 17 00 : 2022 (현행)</b> 확인</td><td>일치</td></tr>
       <tr><td>PWA 캐시 갱신</td><td>naejin-v2.1.0</td><td><code>sw.js</code> — <b>CACHE_NAME = 'naejin-v2.1.0'</b></td><td>일치</td></tr>
     </tbody>
-  </table>
+  </table></div>
   <p style="font-size:12.5px;color:#5b6672">확인 수단: 저장소 clone 후 코드 레벨 대조(3장의 검토 방법 교훈에 따름). 외부 페이지 수집(WebFetch) 판정은 사용하지 않았습니다.</p>
-</section>
 
-<section id="addendum-20260805">
-<h2>7. 추록 — 2026-08-05 재조사 및 현행화</h2>
+<span id="addendum-20260805"></span><h2>7. 추록 — 2026-08-05 재조사 및 현행화</h2>
 <p style="font-size:13px;color:#5b6672;margin:0 0 12px">본 절은 2026-07-09 baseline 확정 이후 <b>2026-08-05</b>에 한국 법령 MCP(LawMCP)로 재조회한 결과와, 신규 배포 WAP·방치 저장소 현황을 추가한 것이다. baseline 본문(1~6절)은 수정하지 않고 그대로 둔다.</p>
 
 <h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">7.1 법령·고시 재조사 결과</h3>
-<table>
+<div class="tw"><table>
 <thead><tr><th>법령·고시</th><th>확인된 현행</th><th>baseline 대비 변동</th><th>계산영향</th><th>영향 WAP</th></tr></thead>
 <tbody>
 <tr><td>건축물의 에너지절약설계기준</td><td>국토교통부고시 <b>제2026-360호</b> (2026-07-08 공포·시행)</td><td><b>고시번호 변경</b> — 제2025-738호 → 제2026-360호. 「정부조직 개편 사항 반영을 위한 57개 고시의 일부개정」</td><td>없음 — 별표1 열관류율 수치 및 제15조 EPI 65점(공공 74점) 불변</td><td>Energy-Performance-Index, u-value-app-</td></tr>
@@ -243,33 +175,33 @@
 <tr style="background:#fdf4e6"><td>기계설비법 시행규칙</td><td>2026-04-16 공포 / 2026-06-01 시행</td><td>baseline 미기재 항목</td><td><b>확인 필요</b> — 기술기준 [별표8] 원문 재확인 권장</td><td>기계설비 계열 8종</td></tr>
 <tr style="background:#fdf4e6"><td>건축물관리법 시행령</td><td>2026-03-24 공포·시행</td><td>baseline 미기재 항목</td><td><b>확인 필요</b> — 해체 감리대가 관련 조문 대조 미실시</td><td>demolition-calc</td></tr>
 </tbody>
-</table>
+</table></div>
 <p style="font-size:12.5px;color:#5b6672"><b>종합</b> — 계산 수치를 변경하는 개정은 확인되지 않았다. 다만 에너지절약설계기준의 <b>고시번호 표기 갱신</b>이 필요하며(정부조직 개편으로 소관부처가 기후에너지환경부로 변경), 위 표에서 배경색 표시된 3건은 조문 대조가 미실시 상태로 차기 정기검토 필수 항목이다.<br>
 <b>범위 한계</b> — KDS·KCS(국가건설기준)와 NFTC(국가화재안전기술기준)는 LawMCP 조회 범위 밖이므로 본 추록에 포함하지 않았다. 국가건설기준센터(kcsc.re.kr) 및 소방청 공고로 별도 확인해야 한다.</p>
 
 <h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">7.2 신규 배포 WAP 등재</h3>
-<table>
+<div class="tw"><table>
 <thead><tr><th>번호</th><th>WAP</th><th>저장소</th><th>내용</th><th>배포일</th><th>대장 등재</th></tr></thead>
 <tbody>
 <tr><td>60</td><td>MANMIN LEGAL REVIEW</td><td>manmin-law</td><td>건축·구조·기계설비·소방·토목 월간 법령 개정 정리 PWA</td><td>2026-08-04</td><td>완료</td></tr>
 <tr><td>00</td><td>KIMMANMIN 통합 홈페이지</td><td>KIMMANMIN</td><td>엔지니어링 플랫폼 본체 — 전 WAP 카드 허브</td><td>2026-08-05</td><td>완료</td></tr>
 </tbody>
-</table>
+</table></div>
 <p style="font-size:12.5px;color:#5b6672">manmin-law는 본 법규검토 체계를 대외 서비스로 구현한 WAP이다. baseline 갱신 시 manmin-law 콘텐츠도 함께 갱신해야 한다.</p>
 
 <h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">7.3 90일 이상 미갱신 저장소 — 정기검토 대상 22종</h3>
 <p style="font-size:13px;color:#c0392b;margin:0 0 10px">2026-08-05 커밋 실측 결과, 엔지니어링 WAP 중 22종이 90일 이상 갱신되지 않았다. 법규 개정 반영 여부를 우선 확인해야 한다.</p>
-<table>
+<div class="tw"><table>
 <thead><tr><th>순위</th><th>대상</th><th>경과일</th><th>사유</th></tr></thead>
 <tbody>
 <tr style="background:#f8d7da"><td>1순위</td><td>소방 6종 — Fire-Protection-Systems, combo-pump-calc, combo-easy-fire-calc, Smoke-Control-System, Emergency-Generator, portal</td><td>126~131일</td><td>NFTC 개정 주기가 짧아 기준 변동 가능성 최대. 소방시설법 2027-01-01 시행예정본 대조 병행</td></tr>
 <tr style="background:#fdf4e6"><td>2순위</td><td>건축행정 7종 — Change-of-Use, Land-Use, construction-air, demolition-calc, Energy-Performance-Index, Architectural-line, Parking-Lot-Act</td><td>123~132일</td><td>에너지절약설계기준 고시번호 갱신 필요. 건축물관리법 시행령 조문 대조 필요</td></tr>
 <tr><td>3순위</td><td>기계설비 6종 · 토목 2종 · 상주감리 1종</td><td>92~131일</td><td>기계설비법 시행규칙 2026-06-01 시행분 반영 여부 확인</td></tr>
 </tbody>
-</table>
+</table></div>
 
 <h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">7.4 차기 정기검토 조치사항</h3>
-<table>
+<div class="tw"><table>
 <thead><tr><th>No</th><th>조치</th><th>대상</th><th>기한</th></tr></thead>
 <tbody>
 <tr><td>1</td><td>에너지절약설계기준 인용 표기를 제2026-360호로 갱신</td><td>Energy-Performance-Index, u-value-app-</td><td>즉시</td></tr>
@@ -278,43 +210,20 @@
 <tr><td>4</td><td>건축물관리법 시행령(2026-03-24) 해체 관련 조문 대조</td><td>demolition-calc</td><td>차기 분기</td></tr>
 <tr><td>5</td><td>KDS·NFTC 최신본 국가건설기준센터·소방청 확인</td><td>구조·토목·소방 전종</td><td>차기 분기</td></tr>
 </tbody>
-</table>
+</table></div>
 
 <p style="font-size:11.5px;color:#7a8794;border-top:1px dashed #dde3e9;padding-top:10px;margin-top:16px">
 추록 작성 2026-08-05 · 법령 확인수단: 한국 법령 MCP(LawMCP) · 커밋 데이터: GitHub 실측<br>
 연계: <a href="index.html" style="color:#2f6fb0">종합관리 허브</a> · <a href="wap-registry.html" style="color:#2f6fb0">통합관리대장</a> · <a href="repo-audit.html" style="color:#2f6fb0">저장소 전수분류현황</a>
 </p>
-</section>
-</div>
-
-<button id="printBtn" onclick="window.print()" title="PDF로 저장/인쇄">
-  <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
-  PDF 인쇄
-</button>
-
 
 
 <footer>
  <span class="lg"><img src="assets/manmin-logo.jpg" alt="MANMIN"></span>
  ㈜대성건축사사무소 · 건축사 김만민 (#20072) · 국제공인 가치공학 전문가(CVS·VMP)<br>
- 전북 익산 · manminkim-eng · MANMIN VER-1.0 · 기준일 2026-08-05<br>법령 확인수단: LawMCP · KDS·KCS는 국가건설기준센터 별도 확인
+ 전북 익산 · manminkim-eng · MANMIN VER-1.1 · 기준일 2026-08-05<br>법령 확인수단: LawMCP · KDS·KCS는 국가건설기준센터 별도 확인
 </footer>
 </div>
-<script>
-(function(){var k=document.body.getAttribute('data-mm')||'',a=document.querySelectorAll('.mm-links a');
-for(var i=0;i<a.length;i++){if(a[i].getAttribute('data-k')===k)a[i].setAttribute('aria-current','page');}})();
-</script>
-<script id="mm-pwa">
-if('serviceWorker' in navigator){window.addEventListener('load',function(){
-  navigator.serviceWorker.register('sw.js').catch(function(){});});}
-(function(){var dp=null;
- window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();dp=e;
-   var b=document.getElementById('mm-install'); if(b){b.hidden=false;}});
- document.addEventListener('click',function(e){
-   var t=e.target.closest&&e.target.closest('#mm-install'); if(!t||!dp)return;
-   dp.prompt(); dp.userChoice.then(function(){dp=null;t.hidden=true;});});
- window.addEventListener('appinstalled',function(){var b=document.getElementById('mm-install');if(b)b.hidden=true;});
-})();
-</script>
+<nav class="mm-tabs no-print"><a href="index.html" data-k="hub"><i>⌂</i>허브</a><a href="repo-audit.html" data-k="repo"><i>▤</i>저장소</a><a href="wap-registry.html" data-k="reg"><i>▦</i>WAP 대장</a><a href="law-review.html" data-k="law"><i>§</i>법규검토</a></nav>
 </body>
 </html>

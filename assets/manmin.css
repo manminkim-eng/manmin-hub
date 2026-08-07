@@ -82,7 +82,7 @@ thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);
 table,tbody,tr,td{display:block;}
 tr{background:var(--card);border:1px solid var(--line2);border-left:3px solid var(--line);
   border-radius:11px;margin-bottom:9px;padding:4px 12px;}
-/* 라벨은 값 위에 캐션으로 — 값이 카드 폭 전부를 쓴다(우측 여백 제거) */
+/* 라벨은 값 위에 캡션으로 — 값이 카드 폭 전부를 쓴다(우측 여백 제거) */
 td{display:block;border:0;border-bottom:1px dashed var(--line2);padding:7px 0;
   font-size:13.5px;line-height:1.55;
   overflow-wrap:anywhere;word-break:keep-all;}   /* 한글은 어절 유지, 긴 URL만 강제분할 */
@@ -90,7 +90,7 @@ td:last-child{border-bottom:0;}
 td::before{content:attr(data-label);display:block;margin-bottom:1px;
   color:var(--sub);font-size:10.5px;font-weight:700;letter-spacing:.03em;
   line-height:1.35;word-break:keep-all;}
-/* 라벨이 없으면(구버전 HTML·JS 미실행) 캐션 자리를 아예 만들지 않는다 */
+/* 라벨이 없으면(구버전 HTML·JS 미실행) 캡션 자리를 아예 만들지 않는다 */
 td[data-label=""]::before,td:not([data-label])::before{display:none;}
 td.alt{background:none;} td.warn{background:#FBEAD2;border-radius:6px;padding:7px 8px;}
 td.bad{background:#F6DAD5;border-radius:6px;padding:7px 8px;}
@@ -112,8 +112,10 @@ td.c{text-align:left;white-space:normal;}   /* 폰 카드모드에서는 중앙�
 .card .m b{color:var(--ink);}
 .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;margin-left:5px;}
 .tag.new{background:var(--green);} .tag.upd{background:var(--blue);} .tag.chk{background:var(--amber);}
+.tag.ok{background:var(--green);} .tag.rev{background:#7A8794;}
+td .tag,td.c .tag{margin-left:0;}
 
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:8px;margin-bottom:14px;}
 .stat{background:var(--card);border:1px solid var(--line2);border-radius:11px;padding:13px 8px;text-align:center;}
 .stat .n{font-size:23px;font-weight:800;line-height:1;color:var(--navy-d);}
 .stat .l{font-size:11px;color:var(--sub);margin-top:5px;}
@@ -132,6 +134,30 @@ footer{margin-top:24px;padding-top:14px;border-top:1px solid var(--line2);
 footer .lg{display:block;width:38px;height:38px;margin:0 auto 8px;border-radius:8px;overflow:hidden;background:var(--logo-bg);}
 footer .lg img{width:100%;height:100%;object-fit:cover;display:block;}
 
+
+/* ---------- 공통 컴포넌트 (VER-1.1 승격) ---------- */
+h2 .hint{display:block;margin-top:3px;font-size:11.5px;font-weight:400;color:var(--sub);letter-spacing:0;}
+.callout{border-left:4px solid var(--accent);background:#FBF6EC;border-radius:0 10px 10px 0;
+  padding:11px 14px;margin:10px 0;font-size:13px;line-height:1.65;}
+.pill{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:6px;
+  border:1px solid var(--line);background:#F6F8FA;color:var(--sub);word-break:break-all;}
+.src{font-size:11.5px;color:var(--sub);line-height:1.7;}
+ul.tight{margin:6px 0;padding-left:19px;}
+ul.tight li{margin:5px 0;font-size:13.5px;line-height:1.6;}
+code{background:#EEF2F5;padding:1px 5px;border-radius:4px;font-size:11.5px;word-break:break-all;}
+
+/* 변경이력 타임라인 */
+.tl{position:relative;padding-left:20px;margin:10px 0;}
+.tl::before{content:'';position:absolute;left:5px;top:5px;bottom:5px;width:2px;background:var(--line);}
+.tl-item{position:relative;margin-bottom:15px;}
+.tl-item::before{content:'';position:absolute;left:-19px;top:5px;width:11px;height:11px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--line);}
+.tl-item.big::before{background:var(--blue);}
+.tl-date{font-size:11.5px;font-weight:800;color:var(--navy-d);letter-spacing:.02em;}
+.tl-title{font-size:14px;font-weight:700;margin:2px 0 3px;color:var(--ink);}
+.tl-body{font-size:13px;color:#374350;line-height:1.6;}
+.tl-body table{margin-top:7px;}
+
 /* ============ 태블릿 이상 : 표를 진짜 표로 ============ */
 @media(min-width:700px){
   body{padding-bottom:24px;}
@@ -148,7 +174,7 @@ footer .lg img{width:100%;height:100%;object-fit:cover;display:block;}
   .mm-logo{width:88px;height:88px;}
   .mm-head h1{font-size:23px;} .mm-kicker{font-size:10px;}
   h2{font-size:18px;scroll-margin-top:72px;}
-  .stats{grid-template-columns:repeat(4,1fr);}
+  .stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}
   .toc ol{columns:2;}
   .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--card);
     border:1px solid var(--line2);border-radius:10px;}
@@ -158,7 +184,7 @@ footer .lg img{width:100%;height:100%;object-fit:cover;display:block;}
   th,td{display:table-cell;border:1px solid var(--line2);padding:7px 9px;text-align:left;vertical-align:top;
     font-size:12px;line-height:1.55;overflow-wrap:normal;word-break:keep-all;}
   thead th{background:#EFEDE7;color:var(--navy-d);font-weight:700;font-size:12px;text-align:center;position:sticky;top:0;}
-  td::before{content:none;display:none;}
+  td::before{content:none;}
   td.alt{background:#FAF9F6;} td.warn{background:#FBEAD2;} td.bad{background:#F6DAD5;}
   td.ok{background:#E4F1E9;} td.hd{background:#EFEDE7;}
   td.warn,td.bad,td.ok{border-radius:0;padding:7px 9px;}

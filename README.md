@@ -1,6 +1,6 @@
 # MANMIN 웹 종합관리 허브
 
-**MANMIN VER-1.0** · 기준일 2026-08-05
+**MANMIN VER-1.1** · 기준일 2026-08-05
 
 ㈜대성건축사사무소 · 건축사 김만민(#20072)이 운영하는 엔지니어링 WAP 자산의 **관리문서 전용 사이트**입니다.
 대외 서비스는 [KIMMANMIN 플랫폼](https://manminkim-eng.github.io/KIMMANMIN/)을 이용하십시오.
@@ -15,9 +15,9 @@ https://manminkim-eng.github.io/manmin-hub/
 |---|---|---|
 | `index.html` | 종합관리 허브 | 골드 `#B8863B` |
 | `repo-audit.html` | GitHub 저장소 전수 분류·현황 분석 | 청록 `#1F7A6B` |
-| `wap-registry.html` | WAP 통합관리대장 (데스크톱) | 블루 `#2F6FB0` |
+| `wap-registry.html` | WAP 통합관리대장 (**단일 반응형**) | 블루 `#2F6FB0` |
 | `law-review.html` | WAP 법규·기술기준 정밀검토 | 적갈 `#B0453A` |
-| `wap-registry-mobile.html` | WAP 통합관리대장 (모바일 전용) | 보라 `#6F5AA6` |
+| `wap-registry-mobile.html` | 구 모바일판 → 대장으로 **리다이렉트** | — |
 | `404.html` | 오류 페이지 | 골드 |
 | `manifest.json` · `sw.js` | PWA 설치·오프라인 | — |
 
@@ -25,7 +25,9 @@ https://manminkim-eng.github.io/manmin-hub/
 
 | 파일 | 용도 | 비고 |
 |---|---|---|
-| `manmin.css` | 공통 디자인 시스템 | 전 페이지 공유 |
+| `manmin.css` | 공통 디자인 시스템 (**mobile-first**) | 전 페이지 공유 |
+| `manmin.js` | 표→카드 라벨 주입 · 네비 · PWA | 전 페이지 공유 |
+| `data.js` | **WAP 36종 단일 데이터 소스** | 대장이 참조 |
 | `manmin-logo.jpg` | 로고 **원본** | 2048×2048 JPEG · 무수정 보존 |
 | `manmin-logo-512.jpg` | 로고 축소본 | 512×512 |
 | `apple-touch-icon.png` | iOS 홈화면 아이콘 | 180×180 |
@@ -49,6 +51,14 @@ https://manminkim-eng.github.io/manmin-hub/
 - **바로가기 4종** — 아이콘 길게 누르면 대장·대장(모바일)·법규검토·저장소 전수분류로 바로 이동
 - `sw.js` 오프라인 캐시 — 문서는 네트워크 우선, 자산은 캐시 우선. 접속이 끊겨도 마지막 화면 열람 가능
 - 캐시 버전: `manmin-hub-v1.0.0` — 내용 갱신 시 이 값을 올려야 구버전이 남지 않습니다
+
+## VER-1.1 리모델링 (2026-08-07)
+
+- **데이터 단일화** — `assets/data.js` 하나만 고치면 전 페이지 반영. 종전 데스크톱·모바일 2벌 관리로 29↔36 불일치가 발생했던 문제 해소
+- **대장 통합** — 데스크톱·모바일 대장을 단일 반응형 페이지로 병합. 구 모바일 주소는 리다이렉트
+- **mobile-first CSS** — 기본을 휴대폰 기준으로 두고 `min-width` 로만 확장 (700px / 1000px)
+- **표 → 카드 자동 전환** — 700px 미만에서 표의 각 행이 카드가 되고 항목명이 값 앞에 붙음. 가로스크롤 불필요
+- **하단 탭바** — 폰에서는 화면 하단 4탭, 700px 이상에서는 상단 네비로 전환
 
 ## 설계 원칙
 
