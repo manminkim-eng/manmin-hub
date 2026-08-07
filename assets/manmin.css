@@ -68,9 +68,11 @@ h3{font-size:14.5px;color:var(--navy-l);margin:18px 0 8px;}
 p{margin:9px 0;} p.sm{font-size:12.5px;color:var(--sub);}
 section.meta{background:var(--card);border:1px solid var(--line2);border-radius:12px;padding:4px 14px;margin-bottom:13px;}
 section.meta table,section.meta tr,section.meta th,section.meta td{display:revert;}
+/* 카드 스타일(배경·테두리·모서리·좌측선)까지 되돌린다 — 카드 안 카드 방지 */
+section.meta tr{background:none;border:0;border-radius:0;margin:0;padding:0;box-shadow:none;}
 section.meta table{width:100%;border-collapse:collapse;font-size:12.5px;}
 section.meta th{text-align:left;color:var(--sub);font-weight:600;padding:7px 0;white-space:nowrap;
-  vertical-align:top;border:0;background:none;width:118px;}
+  vertical-align:top;border:0;background:none;width:78px;}
 section.meta td{padding:7px 0;word-break:break-all;border:0;font-size:12.5px;}
 section.meta td::before{display:none;}
 section.meta tr+tr th,section.meta tr+tr td{border-top:1px dashed var(--line2);}
@@ -179,6 +181,7 @@ code{background:#EEF2F5;padding:1px 5px;border-radius:4px;font-size:11.5px;word-
   .mm-logo{width:88px;height:88px;}
   .mm-head h1{font-size:23px;} .mm-kicker{font-size:10px;}
   h2{font-size:18px;scroll-margin-top:72px;}
+  section.meta{padding:6px 20px;} section.meta th{width:118px;}
   .stats{grid-template-columns:repeat(auto-fit,minmax(130px,1fr));}
   .toc ol{columns:2;}
   .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--card);
@@ -194,6 +197,7 @@ code{background:#EEF2F5;padding:1px 5px;border-radius:4px;font-size:11.5px;word-
   td.ok{background:#E4F1E9;} td.hd{background:#EFEDE7;}
   td.warn,td.bad,td.ok{border-radius:0;padding:7px 9px;}
   td.c,th.c{text-align:center;white-space:nowrap;}
+  section.meta th,section.meta td{border:0;}
 }
 @media(min-width:1000px){
   .grid{grid-template-columns:1fr 1fr;}
@@ -212,6 +216,7 @@ code{background:#EEF2F5;padding:1px 5px;border-radius:4px;font-size:11.5px;word-
   thead{position:static;width:auto;height:auto;overflow:visible;clip:auto;display:table-header-group;}
   th,td{display:table-cell;border:1px solid #ECE9E2;padding:5px 6px;font-size:8.5pt;line-height:1.45;}
   td::before{content:none;display:none;}
+  section.meta th,section.meta td{border:0;}
   thead th,td.warn,td.bad,td.alt,td.ok,td.hd,.mm-logo,.mm-ver{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   h2{break-after:avoid;} .card{break-inside:avoid;} .toc{break-after:page;}
 }
