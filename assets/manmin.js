@@ -62,3 +62,17 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+
+/* ── Cloudflare Web Analytics (쿠키 없음·동의배너 불필요) ──
+   허브 5개 페이지가 모두 이 파일을 불러오므로 여기 한 곳에만 둔다.
+   동적 주입이어도 beacon 이 자기 script 태그의 data-cf-beacon 을 읽어 정상 집계된다(실측 확인). */
+(function () {
+  if (document.querySelector('script[src*="cloudflareinsights.com/beacon.min.js"]')) return;
+  var s = document.createElement('script');
+  s.type = 'module';
+  s.defer = true;
+  s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  s.setAttribute('data-cf-beacon', '{"token": "e7878b8cc50d40039bb212406a3f1757"}');
+  document.body.appendChild(s);
+})();
