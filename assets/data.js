@@ -2,20 +2,20 @@
    정본: WAP_통합관리대장.xlsx — 이 파일만 고치면 전 페이지에 반영됩니다.
    갱신 시 sw.js 의 CACHE 버전도 함께 올릴 것 */
 window.MANMIN_DATA = {
-  asof: "2026-08-05",
+  asof: "2026-08-08",
   waps: [
     // 메인 포탈
-    {no:"00",name:"메인 포탈(홈페이지)",repo:"KIMMANMIN",ver:"2.0",disc:"포탈",std:"PWA · GitHub Pages · 정적(백엔드 없음)",review:"2026-07-16",status:"updated",note:"성능 최적화 + 버전표기 + 헤더 정리 배포 완료(f8667a2). 저장소 66MB→7.5MB, 초기로딩 약9MB→약95KB. WebP 62개·lazy 84/86·sw CACHE manmin-v2.0. 푸터에 'MANMIN PORTAL v2.0' 표시"},
+    {no:"00",name:"메인 포탈(홈페이지)",repo:"KIMMANMIN",ver:"2.0",disc:"포탈",std:"PWA · GitHub Pages · 정적(백엔드 없음)",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 성능 최적화 + 버전표기 + 헤더 정리 배포 완료(f8667a2). 저장소 66MB→7.5MB, 초기로딩 약9MB→약95KB. WebP 62개·lazy 84/86·sw CACHE manmin-v2.0. 푸터에 'MANMIN PORTAL v2.0' 표시"},
     // 소방
-    {no:"01",name:"옥내소화전",repo:"fire-hydrant-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 102 [시행 2026-07-01]",review:"2026-07-09",status:"updated",note:"NFTC 시행일 2022.12.1→2026.7.1 갱신. 130/0.17/2.6 불변"},
-    {no:"02",name:"옥외소화전",repo:"outdoor-hydrant-calc",ver:"3.3",disc:"소방",std:"NFPC 109(제2025-25호)·NFTC 109 [2026-03-01]",review:"2026-07-09",status:"latest",note:"350/0.25/7 현행"},
-    {no:"03",name:"스프링클러",repo:"fire-sprinkler-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 103 [시행 2026-07-01]",review:"2026-07-09",status:"updated",note:"NFTC 시행일 2026.3.1→2026.7.1, 구 공고번호 정리"},
-    {no:"04",name:"간이스프링",repo:"simple-sprinkler-calc",ver:"—",disc:"소방",std:"NFPC·NFTC 103A [2024-12-01]",review:"2026-07-09",status:"latest",note:"구 NFSC 명칭 정정 완료"},
-    {no:"07",name:"옥내+옥외 겸용",repo:"combo-indoor-outdoor-calc",ver:"3.4",disc:"소방",std:"NFTC 102 [2026-07-01]·109 [2026-03-01]",review:"2026-07-09",status:"updated",note:"102 시행일 갱신, 109 현행 유지"},
-    {no:"05",name:"옥내+스프 겸용",repo:"combo-pump-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103 [시행 2026-07-01]",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
-    {no:"06",name:"옥내+간이 겸용",repo:"combo-easy-fire-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103A [시행 2026-07-01]",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
+    {no:"01",name:"옥내소화전",repo:"fire-hydrant-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 102 [시행 2026-07-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2022.12.1→2026.7.1 갱신. 130/0.17/2.6 불변"},
+    {no:"02",name:"옥외소화전",repo:"outdoor-hydrant-calc",ver:"3.3",disc:"소방",std:"NFPC 109(제2025-25호)·NFTC 109 [2026-03-01]",review:"2026-08-08",status:"latest",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 350/0.25/7 현행"},
+    {no:"03",name:"스프링클러",repo:"fire-sprinkler-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 103 [시행 2026-07-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2026.3.1→2026.7.1, 구 공고번호 정리"},
+    {no:"04",name:"간이스프링",repo:"simple-sprinkler-calc",ver:"—",disc:"소방",std:"NFPC·NFTC 103A [2024-12-01]",review:"2026-08-08",status:"latest",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 구 NFSC 명칭 정정 완료"},
+    {no:"07",name:"옥내+옥외 겸용",repo:"combo-indoor-outdoor-calc",ver:"3.4",disc:"소방",std:"NFTC 102 [2026-07-01]·109 [2026-03-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 102 시행일 갱신, 109 현행 유지"},
+    {no:"05",name:"옥내+스프 겸용",repo:"combo-pump-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103 [시행 2026-07-01]",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
+    {no:"06",name:"옥내+간이 겸용",repo:"combo-easy-fire-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103A [시행 2026-07-01]",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
     // 기계설비
-    {no:"08",name:"소방 통합포털",repo:"portal",ver:"3.0",disc:"소방",std:"소방시설 통합계산 허브(개별 NFTC 준용)",review:"2026-08-05",status:"review",note:"최종커밋 2026-04-01 · 126일 경과. 허브 성격이라 버전표기 없음(정상)"},
+    {no:"08",name:"소방 통합포털",repo:"portal",ver:"3.0",disc:"소방",std:"소방시설 통합계산 허브(개별 NFTC 준용)",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-04-01 · 126일 경과. 허브 성격이라 버전표기 없음(정상)"},
     {no:"09",name:"제연설비",repo:"Smoke-Control-System",ver:"3.0",disc:"소방",std:"NFPC·NFTC 501",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 우선검토 대상"},
     {no:"10",name:"비상발전기",repo:"Emergency-Generator",ver:"3.0",disc:"소방",std:"KDS·NFTC",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-31 · 127일 경과 — 우선검토 대상"},
     {no:"11",name:"소방시설 설치검토",repo:"Fire-Protection-Systems",ver:"2.0",disc:"소방",std:"소방시설법 시행령 [시행 2026-07-01] · 2027-01-01 시행예정본 대조 필요",review:"2026-08-05",status:"check",note:"최종커밋 2026-03-27 · 131일 경과. 타이틀 오타(Vre3.0) 미수정. 시행예정 조문 대조 미실시"},
@@ -45,9 +45,20 @@ window.MANMIN_DATA = {
     // 토목
     {no:"50",name:"토목배관",repo:"civil-engineering-piping",ver:"1.0",disc:"토목",std:"KDS 61 40 00(2025-01-21) · 합리식·Manning",review:"2026-07-09",status:"review",note:"관로 근거 갱신 권장, 배포 URL 확인 필요"},
     {no:"51",name:"토목옹벽",repo:"tomog-ongbyeog",ver:"1.0",disc:"토목",std:"KDS 11 80 05 · KDS 17 10 00(2024-147) M-O",review:"2026-07-09",status:"review",note:"내진 상위기준 근거 갱신 권장"},
-    {no:"60",name:"MANMIN LEGAL REVIEW",repo:"manmin-law",ver:"1.0",disc:"법규",std:"건축법·NFTC·KDS 등 월간 개정 정리",review:"2026-08-05",status:"latest",note:"2026-08-04 신규 배포 PWA. 본 법규검토 체계의 대외 서비스판 — baseline 갱신 시 함께 갱신"}
+    {no:"60",name:"MANMIN LEGAL REVIEW",repo:"manmin-law",ver:"1.0",disc:"법규",std:"건축법·NFTC·KDS 등 월간 개정 정리",review:"2026-08-05",status:"latest",note:"2026-08-04 신규 배포 PWA. 본 법규검토 체계의 대외 서비스판 — baseline 갱신 시 함께 갱신"},
+    {no:"61",name:"MANMIN 종합관리 허브",repo:"manmin-hub",ver:"1.1",disc:"관리",std:"WAP 통합관리대장·법규검토·저장소 점검(내부 관리도구)",review:"2026-08-08",status:"check",note:"2026-08-07 신규 배포. 2026-08-08 로컬 폰트를 1순위로 적용(Google Fonts 미사용 설계 — 기기별 시스템폰트 편차 제거). ★assets/fonts/NotoSansKR-var.woff2 업로드 대기 — sw.js 프리캐시에 이미 등재돼 있어 현재 Pages 404, 폰트만 미적용 상태"}
   ],
   changelog: [
+    {date:"2026-08-08", big:true, title:"WAP 10종 — 로컬 폰트 폴백 일괄 적용 (오프라인·차단망 한글 깨짐 방지)", body:
+      "Google Fonts CDN에만 의존하던 폰트 체계를 로컬 WOFF2 폴백과 병행 구조로 전환. HTML 103개 전수조사에서 58개가 CDN 의존·자체 @font-face 0개·SW 폰트 미캐시 20개를 확인하고 착수했다. 핵심은 패밀리명 분리 — 로컬 @font-face를 'Noto Sans KR'로 그냥 선언하면 나중 선언인 로컬이 항상 이겨 CDN이 무용지물이 되므로, 'Noto Sans KR Local'로 이름을 나눠 폰트 스택 2순위에 두었다. 폰트는 google/fonts 고정 SHA(2d85e20)의 NotoSansKR[wght].ttf를 KS X 1001 한글 2,350 + KS 기호 987 + 라틴 + 공학기호 + 실사용·상용 한자 180 = 3,659자로 서브셋해 418KB 가변 1파일(wght 100~900)로 만들었다. 원본 42MB 대비 99% 절감. 빌드 스크립트를 manmin-hub/tools/font/ 에 두어 재현 가능하게 했다(fonttools 4.63.0·Brotli 1.2.0 고정 시 바이트 동일 확인). 검증은 14개 페이지 실사용 문자를 폰트 cmap과 대조하는 방식으로 했고, 이 과정에서 서브셋 누락 2건(© − ㎥ / 한자 小常時)을 잡아 두 차례 재생성했다. 배포 후 clone 재대조 38/38 바이트 일치, Pages 200/417.9KB, SW 캐시 v3.4 활성 확인. 관리허브는 Google Fonts 미사용 사이트라 로컬을 1순위로 두어 기기별 시스템폰트 편차(Windows 맑은고딕/macOS Apple SD)를 없앴다 — 서체가 실제로 바뀐다. 정정: 초안에 적은 '온라인에서는 로컬 폰트를 받지 않는다'는 사실과 다르다. sw.js PRECACHE에 등재했으므로 SW 설치 시 항상 받으며, 이는 오프라인 대응을 위한 의도된 동작이다.",
+      rows:[
+        ["폰트 전달","Google Fonts CDN 단독","CDN + 로컬 WOFF2 폴백 2순위","10종"],
+        ["로컬 폰트","없음(자체 @font-face 0개)","NotoSansKR-var.woff2 418KB 가변 1파일","01~08·00·61"],
+        ["폰트 토큰","--f-kr/--font-base/--sans 등 8종 파편화","--font-sans/display/serif/mono 4종 표준 + 구토큰 별칭","00"],
+        ["SW 프리캐시","폰트 미등재","manmin-fonts.css + woff2 등재, 캐시 v3.3→v3.4","01~08"],
+        ["관리허브 서체","시스템폰트(기기별 상이)","Noto Sans KR Local 1순위 — 전 사이트 통일","61"],
+        ["빌드 재현성","수작업","tools/font/subset.py + patch.py (멱등)","manmin-hub"]
+      ]},
     {date:"2026-07-16", big:true, title:"30 설계·감리 대가 — 엔지니어링 대가기준 통합 (Ver4.0) 배포", body:
       "건축사 대가만 산출하던 도구를 건축사·엔지니어링 2기준 통합 산출기로 확장. 상단 [대가기준] 토글로 건축사↔엔지니어링 전환, 엔지니어링은 [부문] 선택(건설·통신·산업플랜트·시공상세도작성비)에 따라 업무단계·분야·그룹·난이도·배수옵션이 조건부 표시. 요율 데이터는 LawMCP 원문 대조로 확보(엔지니어링사업대가 기준 별표1~4 전 구간)하고 직선보간+5,000억 초과 지수공식 엔진을 공유. A4 산출서·모바일·모달을 기준별로 2원화(근거 고시 자동표기), A4 미리보기=PDF 여백 통일(배너 풀블리드+좌우 40px)·폰트 정리, 좌측 로고 onError 폴백 추가. 1장당 단가식(별표5)은 노임단가 방식이라 제외. 3.0 원본은 버전s-3.0 보존. LawMCP 현행 확인: 건축사법 제19조의3(2025-10-01)·엔지니어링산업진흥법 제31조(시행 2026-06-03).",
       rows:[

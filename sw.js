@@ -1,6 +1,6 @@
 /* MANMIN 종합관리 허브 · Service Worker · VER-1.1
    전략: 정적 자산 프리캐시 + 네트워크 우선(문서), 캐시 우선(자산) */
-const CACHE = 'manmin-hub-v1.1.3';
+const CACHE = 'manmin-hub-v1.1.4';
 const ASSETS = [
   './', './index.html', './repo-audit.html', './wap-registry.html',
   './law-review.html', './404.html',
