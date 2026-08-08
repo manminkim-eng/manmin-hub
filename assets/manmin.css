@@ -3,6 +3,20 @@
    기본 = 휴대폰. min-width 로만 확장한다.
    ㈜대성건축사사무소 · 건축사 김만민
    ============================================================ */
+
+/* ---------- 로컬 폰트 (외부 CDN 무의존 · 오프라인 대응) ----------
+   Noto Sans KR 가변 서브셋 421KB (wght 100~900 · KS X 1001 한글+한자 · 공학기호)
+   원본: 11.개발자료/73.폰트파일 · SIL Open Font License 1.1
+   ※ 관리허브는 Google Fonts를 쓰지 않으므로 로컬을 1순위로 둔다.
+      기기별 시스템폰트 편차(Windows 맑은고딕 / macOS Apple SD)를 없애고
+      나머지 WAP 9개와 동일한 서체로 통일한다.                          */
+@font-face{
+  font-family:'Noto Sans KR Local';
+  src:url('./fonts/NotoSansKR-var.woff2') format('woff2-variations'),
+      url('./fonts/NotoSansKR-var.woff2') format('woff2');
+  font-weight:100 900; font-style:normal; font-display:swap;
+}
+
 :root{
   --navy:#2B3E5E; --navy-d:#1E2D46; --navy-l:#3E547A;
   --logo-bg:#A1A2A6; --cream:#F5F2EA; --bg:#F7F6F3; --card:#fff;
@@ -15,7 +29,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:rgba(43,62,94,.12);}
 html{-webkit-text-size-adjust:100%;}
 body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;font-size:15px;
-  font-family:-apple-system,BlinkMacSystemFont,'Malgun Gothic','Noto Sans KR',sans-serif;
+  font-family:'Noto Sans KR Local','Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
   padding-top:var(--sat);
   padding-bottom:calc(var(--tab-h) + var(--sab) + 12px);   /* 하단 탭바 공간 */
 }
