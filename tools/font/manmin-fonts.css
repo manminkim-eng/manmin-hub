@@ -1,0 +1,29 @@
+/* ============================================================
+   MANMIN 공통 폰트 팩 — 로컬 폴백  v1.2  (2026-08-08)
+   ------------------------------------------------------------
+   역할 : Google Fonts CDN이 차단·오프라인일 때만 동작하는 폴백.
+          패밀리명을 'Noto Sans KR Local'로 분리했으므로
+          온라인 상태에서는 이 파일을 다운로드하지 않는다.
+   서브셋 : KS X 1001 한글 2,350자 + KS 기호 987자 + 라틴
+            + 공학기호 + 실사용·상용 한자 180자 = 총 3,659자 / 418KB
+   원본 : google/fonts @2d85e20 · NotoSansKR[wght].ttf
+   라이선스 : SIL Open Font License 1.1
+   빌드 : manmin-hub/tools/font/subset.py
+   ============================================================ */
+
+@font-face {
+  font-family: 'Noto Sans KR Local';
+  src: url('./NotoSansKR-var.woff2') format('woff2-variations'),
+       url('./NotoSansKR-var.woff2') format('woff2');
+  font-weight: 100 900;   /* 가변축 wght — 1파일로 300~900 전부 커버 */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* MANMIN 표준 폰트 토큰 (WAP 공통 규격 — 신규 작업은 이 4종 사용) */
+:root {
+  --font-sans:    'Noto Sans KR', 'Noto Sans KR Local', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-display: 'Noto Sans KR', 'Noto Sans KR Local', 'Apple SD Gothic Neo', sans-serif;
+  --font-serif:   'Noto Serif KR', 'KoPubWorld Batang', 'Batang', serif;
+  --font-mono:    'JetBrains Mono', 'Consolas', 'D2Coding', ui-monospace, monospace;
+}
