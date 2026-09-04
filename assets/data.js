@@ -1,54 +1,90 @@
-/* MANMIN 종합관리 허브 · 단일 데이터 소스 · VER-1.1
+/* MANMIN 종합관리 허브 · 단일 데이터 소스 · VER-1.2
    정본: WAP_통합관리대장.xlsx — 이 파일만 고치면 전 페이지에 반영됩니다.
    갱신 시 sw.js 의 CACHE 버전도 함께 올릴 것 */
 window.MANMIN_DATA = {
-  asof: "2026-08-08",
+  asof: "2026-09-05",
   waps: [
     // 메인 포탈
     {no:"00",name:"메인 포탈(홈페이지)",repo:"KIMMANMIN",ver:"2.0",disc:"포탈",std:"PWA · GitHub Pages · 정적(백엔드 없음)",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 성능 최적화 + 버전표기 + 헤더 정리 배포 완료(f8667a2). 저장소 66MB→7.5MB, 초기로딩 약9MB→약95KB. WebP 62개·lazy 84/86·sw CACHE manmin-v2.0. 푸터에 'MANMIN PORTAL v2.0' 표시"},
     // 소방
-    {no:"01",name:"옥내소화전",repo:"fire-hydrant-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 102 [시행 2026-07-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2022.12.1→2026.7.1 갱신. 130/0.17/2.6 불변"},
-    {no:"02",name:"옥외소화전",repo:"outdoor-hydrant-calc",ver:"3.3",disc:"소방",std:"NFPC 109(제2025-25호)·NFTC 109 [2026-03-01]",review:"2026-08-08",status:"latest",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 350/0.25/7 현행"},
-    {no:"03",name:"스프링클러",repo:"fire-sprinkler-calc",ver:"3.4",disc:"소방",std:"NFPC·NFTC 103 [시행 2026-07-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2026.3.1→2026.7.1, 구 공고번호 정리"},
-    {no:"04",name:"간이스프링",repo:"simple-sprinkler-calc",ver:"—",disc:"소방",std:"NFPC·NFTC 103A [2024-12-01]",review:"2026-08-08",status:"latest",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 구 NFSC 명칭 정정 완료"},
-    {no:"07",name:"옥내+옥외 겸용",repo:"combo-indoor-outdoor-calc",ver:"3.4",disc:"소방",std:"NFTC 102 [2026-07-01]·109 [2026-03-01]",review:"2026-08-08",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 102 시행일 갱신, 109 현행 유지"},
-    {no:"05",name:"옥내+스프 겸용",repo:"combo-pump-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103 [시행 2026-07-01]",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
-    {no:"06",name:"옥내+간이 겸용",repo:"combo-easy-fire-calc",ver:"3.3",disc:"소방",std:"NFPC·NFTC 102·103A [시행 2026-07-01]",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
+    {no:"01",name:"옥내소화전",repo:"fire-hydrant-calc",ver:"5.0",disc:"소방",std:"NFPC·NFTC 102 [시행 2026-07-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2022.12.1→2026.7.1 갱신. 130/0.17/2.6 불변"},
+    {no:"02",name:"옥외소화전",repo:"outdoor-hydrant-calc",ver:"5.0",disc:"소방",std:"NFPC 109(제2025-25호)·NFTC 109 [2026-03-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 350/0.25/7 현행"},
+    {no:"03",name:"스프링클러",repo:"fire-sprinkler-calc",ver:"5.0",disc:"소방",std:"NFPC·NFTC 103 [시행 2026-07-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). NFTC 시행일 2026.3.1→2026.7.1, 구 공고번호 정리"},
+    {no:"04",name:"간이스프링",repo:"simple-sprinkler-calc",ver:"5.0",disc:"소방",std:"NFPC·NFTC 103A [2024-12-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 구 NFSC 명칭 정정 완료"},
+    {no:"07",name:"옥내+옥외 겸용",repo:"combo-indoor-outdoor-calc",ver:"5.0",disc:"소방",std:"NFTC 102 [2026-07-01]·109 [2026-03-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 102 시행일 갱신, 109 현행 유지"},
+    {no:"05",name:"옥내+스프 겸용",repo:"combo-pump-calc",ver:"5.0",disc:"소방",std:"NFPC·NFTC 102·103 [시행 2026-07-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
+    {no:"06",name:"옥내+간이 겸용",repo:"combo-easy-fire-calc",ver:"5.0",disc:"소방",std:"NFPC·NFTC 102·103A [시행 2026-07-01]",review:"2026-09-02",status:"updated",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-03-29 · 129일 경과 — 법규 최신성 우선검토 대상. 종전 05·06 병합행을 분리 등재(2026-08-05)"},
     // 기계설비
     {no:"08",name:"소방 통합포털",repo:"portal",ver:"3.0",disc:"소방",std:"소방시설 통합계산 허브(개별 NFTC 준용)",review:"2026-08-08",status:"review",note:"2026-08-08 로컬 폰트 폴백 적용(NotoSansKR-var.woff2 418KB·sw v3.4). 최종커밋 2026-04-01 · 126일 경과. 허브 성격이라 버전표기 없음(정상)"},
-    {no:"09",name:"제연설비",repo:"Smoke-Control-System",ver:"3.0",disc:"소방",std:"NFPC·NFTC 501",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-29 · 129일 경과 — 우선검토 대상"},
-    {no:"10",name:"비상발전기",repo:"Emergency-Generator",ver:"3.0",disc:"소방",std:"KDS·NFTC",review:"2026-08-05",status:"review",note:"최종커밋 2026-03-31 · 127일 경과 — 우선검토 대상"},
-    {no:"11",name:"소방시설 설치검토",repo:"Fire-Protection-Systems",ver:"2.0",disc:"소방",std:"소방시설법 시행령 [시행 2026-07-01] · 2027-01-01 시행예정본 대조 필요",review:"2026-08-05",status:"check",note:"최종커밋 2026-03-27 · 131일 경과. 타이틀 오타(Vre3.0) 미수정. 시행예정 조문 대조 미실시"},
-    {no:"20",name:"건물우수",repo:"Roof-Drain",ver:"2.0",disc:"기계",std:"KDS 31 30 35:2021 · Manning",review:"2026-07-09",status:"latest",note:"현행"},
-    {no:"21",name:"위생배관",repo:"Sanitary-Piping-System",ver:"2.0",disc:"기계",std:"KDS 31 30 15 · 헌터곡선",review:"2026-07-09",status:"review",note:"원본 대조 대기(변경없음 추정)"},
-    {no:"22",name:"냉온수배관",repo:"CHWS-STSTEM",ver:"2.0",disc:"기계",std:"기계설비 기술기준 별표8(제2021-851호)",review:"2026-07-09",status:"latest",note:"현행(별표 원문 재확인 권장)"},
-    {no:"23",name:"공조덕트",repo:"Air-Conditioning-Duct",ver:"2.0",disc:"기계",std:"기계설비 기술기준 별표9 · KDS/KCS",review:"2026-07-09",status:"review",note:"원본 대조 대기"},
-    {no:"24",name:"설비펌프",repo:"Booster-Pump",ver:"2.0",disc:"기계",std:"기계설비 설계기준",review:"2026-07-09",status:"review",note:"원본 대조 대기"},
-    {no:"25",name:"급탕설비",repo:"Hot-Water-Supply-System",ver:"2.0",disc:"기계",std:"용도별 급탕 기준",review:"2026-07-09",status:"review",note:"원본 대조 대기"},
-    {no:"26",name:"환기설비",repo:"ventilation-equipment",ver:"2.1",disc:"기계",std:"설비기준규칙 제11조(제1531호) · 기계설비 기술기준",review:"2026-07-09",status:"updated",note:"근거 정정(별표3 오귀속 제거), 계산값 유지"},
+    {no:"09",name:"제연설비",repo:"Smoke-Control-System",ver:"5.0",disc:"소방",std:"NFPC·NFTC 501",review:"2026-09-02",status:"updated",note:"최종커밋 2026-03-29 · 129일 경과 — 우선검토 대상"},
+    {no:"10",name:"비상발전기",repo:"Emergency-Generator",ver:"5.0",disc:"소방",std:"KDS·NFTC",review:"2026-09-02",status:"updated",note:"최종커밋 2026-03-31 · 127일 경과 — 우선검토 대상"},
+    {no:"11",name:"소방시설 설치검토",repo:"Fire-Protection-Systems",ver:"5.0",disc:"소방",std:"소방시설법 시행령 [시행 2026-07-01] · 2027-01-01 시행예정본 대조 필요",review:"2026-09-01",status:"updated",note:"최종커밋 2026-03-27 · 131일 경과. 타이틀 오타(Vre3.0) 미수정. 시행예정 조문 대조 미실시"},
+    {no:"20",name:"건물우수",repo:"Roof-Drain",ver:"5.0",disc:"기계",std:"KDS 31 30 35:2021 · Manning",review:"2026-09-02",status:"updated",note:"현행"},
+    {no:"21",name:"위생배관",repo:"Sanitary-Piping-System",ver:"5.0",disc:"기계",std:"KDS 31 30 15 · 헌터곡선",review:"2026-09-02",status:"updated",note:"원본 대조 대기(변경없음 추정)"},
+    {no:"22",name:"냉온수배관",repo:"CHWS-STSTEM",ver:"5.0",disc:"기계",std:"기계설비 기술기준 별표8(제2021-851호)",review:"2026-09-02",status:"updated",note:"현행(별표 원문 재확인 권장)"},
+    {no:"23",name:"공조덕트",repo:"Air-Conditioning-Duct",ver:"5.0",disc:"기계",std:"기계설비 기술기준 별표9 · KDS/KCS",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · A4·JPG·인쇄 규격 통일. 종전: 원본 대조 대기"},
+    {no:"24",name:"설비펌프",repo:"Booster-Pump",ver:"5.0",disc:"기계",std:"기계설비 설계기준",review:"2026-09-02",status:"updated",note:"원본 대조 대기"},
+    {no:"25",name:"급탕설비",repo:"Hot-Water-Supply-System",ver:"5.0",disc:"기계",std:"용도별 급탕 기준",review:"2026-09-02",status:"updated",note:"원본 대조 대기"},
+    {no:"26",name:"환기설비",repo:"ventilation-equipment",ver:"5.0",disc:"기계",std:"설비기준규칙 제11조(제1531호) · 기계설비 기술기준",review:"2026-09-02",status:"updated",note:"근거 정정(별표3 오귀속 제거), 계산값 유지"},
     {no:"27",name:"부하계산(RTS)",repo:"Radiant-Time-Series-Method",ver:"3.0",disc:"기계",std:"ASHRAE 2009 RTS법",review:"2026-07-09",status:"latest",note:"국제표준 기반, 국내법 영향 없음"},
     // 건축·행정·에너지
-    {no:"30",name:"설계·감리 대가",repo:"1architect-fee-app",ver:"4.0",disc:"건축",std:"건축사 대가 고시 제2020-635호 [2020-09-14] + 엔지니어링사업대가 기준(산업부 2024-12-31) 별표1~4",review:"2026-07-16",status:"updated",note:"Ver4.0 — 건축사·엔지니어링 2기준 통합(건설·통신·산업플랜트·시공상세도), 부문 선택 UI·A4 서식 개선·로고 폴백. 커밋 aa9a0d4"},
-    {no:"31",name:"열관류율",repo:"u-value-app-",ver:"3.1",disc:"건축",std:"에너지절약설계기준 제2025-738호 [2025-12-31]",review:"2026-07-09",status:"latest",note:"Babel@7.29.7 고정·CACHE v3.2, 별표1 U값 불변"},
-    {no:"32",name:"해체감리",repo:"demolition-calc",ver:"3.0",disc:"건축",std:"건축물관리법 제30~32조 · 2026 노임",review:"2026-07-09",status:"latest",note:"현행 반영"},
-    {no:"33",name:"상주감리",repo:"arch-supervision",ver:"3.0",disc:"건축",std:"건축법 제25조·시행령 제19조5항 [2026-02-27]",review:"2026-07-09",status:"latest",note:"대상 미변경, 2026 반영"},
-    {no:"34",name:"공기산정",repo:"construction-air",ver:"1.0",disc:"건축",std:"건설공사 품질·안전 기준",review:"2026-07-09",status:"review",note:"원본 대조 대기"},
-    {no:"35",name:"용도변경",repo:"Change-of-Use",ver:"1.0",disc:"건축",std:"건축법 제19조 9개 시설군",review:"2026-07-09",status:"latest",note:"체계 미변경"},
-    {no:"36",name:"국토이용",repo:"Land-Use",ver:"1.0",disc:"건축",std:"국토계획법 시행령(제35628호) 건폐율·용적률",review:"2026-07-09",status:"latest",note:"상한 미변경"},
-    {no:"38",name:"일조사선",repo:"Architectural-line",ver:"1.0",disc:"건축",std:"건축법 시행령 제86조 정북 10m",review:"2026-07-09",status:"latest",note:"9→10m(2023) 이미 반영 확인"},
-    {no:"39",name:"성능지표(EPI)",repo:"Energy-Performance-Index",ver:"3.0",disc:"건축",std:"에너지절약설계기준 제2025-738호",review:"2026-07-09",status:"check",note:"부문별 최소배점(mandMin) 구현됨 — 738호 배점표 세부 재확인 권장"},
-    {no:"40",name:"주차장법",repo:"Parking-Lot-Act",ver:"1.0",disc:"건축",std:"주차장법 시행령 별표1 [2025-08-17]",review:"2026-07-09",status:"latest",note:"원단위 미변경"},
+    {no:"30",name:"설계·감리 대가",repo:"1architect-fee-app",ver:"5.0",disc:"건축",std:"건축사 대가 고시 제2020-635호 [2020-09-14] + 엔지니어링사업대가 기준(산업부 2024-12-31) 별표1~4",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · #root 마운트 복구(R25). 종전: Ver4.0 — 건축사·엔지니어링 2기준 통합(건설·통신·산업플랜트·시공상세도), 부문 선택 UI·A4 서식 개선·로고 폴백. 커밋 aa9a0d4"},
+    {no:"31",name:"열관류율",repo:"u-value-app-",ver:"5.0",disc:"건축",std:"에너지절약설계기준 제2025-738호 [2025-12-31]",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R27 클론 정화·R23② 행 나눔. 종전: Babel@7.29.7 고정·CACHE v3.2, 별표1 U값 불변"},
+    {no:"32",name:"해체감리",repo:"demolition-calc",ver:"5.0",disc:"건축",std:"건축물관리법 제30~32조 · 2026 노임",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · 1매 고정 산출서 폼(§3-4-2). 종전: 현행 반영"},
+    {no:"33",name:"상주감리",repo:"arch-supervision",ver:"5.0",disc:"건축",std:"건축법 제25조·시행령 제19조5항 [2026-02-27]",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · 1매 고정 산출서 폼(§3-4-2). 종전: 대상 미변경, 2026 반영"},
+    {no:"34",name:"공기산정",repo:"construction-air",ver:"5.0",disc:"건축",std:"건설공사 품질·안전 기준",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R28 미해당(22엔진). 종전: 원본 대조 대기"},
+    {no:"35",name:"용도변경",repo:"Change-of-Use",ver:"5.0",disc:"건축",std:"건축법 제19조 9개 시설군",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · mono 한글 폴백. 종전: 체계 미변경"},
+    {no:"36",name:"국토이용",repo:"Land-Use",ver:"5.0",disc:"건축",std:"국토계획법 시행령(제35628호) 건폐율·용적률",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R24 표 선 기준본. 종전: 상한 미변경"},
+    {no:"38",name:"일조사선",repo:"Architectural-line",ver:"5.0",disc:"건축",std:"건축법 시행령 제86조 정북 10m",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R27 원인 실측 도구. 종전: 9→10m(2023) 이미 반영 확인"},
+    {no:"39",name:"성능지표(EPI)",repo:"Energy-Performance-Index",ver:"5.0",disc:"건축",std:"에너지절약설계기준 제2025-738호",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · v6.0 서식 재구축 대기. 종전: 부문별 최소배점(mandMin) 구현됨 — 738호 배점표 세부 재확인 권장"},
+    {no:"40",name:"주차장법",repo:"Parking-Lot-Act",ver:"5.0",disc:"건축",std:"주차장법 시행령 별표1 [2025-08-17]",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · JPG 지연 로더(R27). 종전: 원단위 미변경"},
     // 구조
     {no:"37",name:"건축행정(인허가 체크리스트)",repo:"미배포",ver:"1.0",disc:"건축",std:"건축법",review:"2026-08-05",status:"check",note:"★GitHub 저장소 미생성·홈페이지 미등록. 저장소 생성 여부 결정 필요"},
-    {no:"45",name:"내진성능",repo:"Seismic-Evaluation",ver:"2.1",disc:"구조",std:"건축법 제48조·시행령 제32조 · KDS 41 17 00:2022",review:"2026-07-09",status:"updated",note:"KDS 41 17 00 2018→2022 정정, KDS 17 10 00 존속 정정"},
-    {no:"46",name:"설계하중",repo:"architectural-structure",ver:"1.0",disc:"구조",std:"KDS 41 12 00:2022(구 41 10 15)",review:"2026-07-09",status:"latest",note:"코드번호·수치 현행 정합"},
+    {no:"45",name:"내진성능",repo:"Seismic-Evaluation",ver:"5.0",disc:"구조",std:"건축법 제48조·시행령 제32조 · KDS 41 17 00:2022",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R23② 행 나눔. 종전: KDS 41 17 00 2018→2022 정정, KDS 17 10 00 존속 정정"},
+    {no:"46",name:"설계하중",repo:"architectural-structure",ver:"5.0",disc:"구조",std:"KDS 41 12 00:2022(구 41 10 15)",review:"2026-09-02",status:"updated",note:"코드번호·수치 현행 정합"},
     // 토목
-    {no:"50",name:"토목배관",repo:"civil-engineering-piping",ver:"1.0",disc:"토목",std:"KDS 61 40 00(2025-01-21) · 합리식·Manning",review:"2026-07-09",status:"review",note:"관로 근거 갱신 권장, 배포 URL 확인 필요"},
-    {no:"51",name:"토목옹벽",repo:"tomog-ongbyeog",ver:"1.0",disc:"토목",std:"KDS 11 80 05 · KDS 17 10 00(2024-147) M-O",review:"2026-07-09",status:"review",note:"내진 상위기준 근거 갱신 권장"},
+    {no:"50",name:"토목배관",repo:"civil-engineering-piping",ver:"5.0",disc:"토목",std:"KDS 61 40 00(2025-01-21) · 합리식·Manning",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R24 separate. 종전: 관로 근거 갱신 권장, 배포 URL 확인 필요"},
+    {no:"51",name:"토목옹벽",repo:"tomog-ongbyeog",ver:"5.0",disc:"토목",std:"KDS 11 80 05 · KDS 17 10 00(2024-147) M-O",review:"2026-09-05",status:"updated",note:"v5.0 디자인 통일 + S10 소급(R25 SW 오염 차단·R27·R24 표선·R26) 배포 2026-09-05 · R24③ 전역 collapse 누출 정정. 종전: 내진 상위기준 근거 갱신 권장"},
     {no:"60",name:"MANMIN LEGAL REVIEW",repo:"manmin-law",ver:"1.0",disc:"법규",std:"건축법·NFTC·KDS 등 월간 개정 정리",review:"2026-08-05",status:"latest",note:"2026-08-04 신규 배포 PWA. 본 법규검토 체계의 대외 서비스판 — baseline 갱신 시 함께 갱신"},
-    {no:"61",name:"MANMIN 종합관리 허브",repo:"manmin-hub",ver:"1.1",disc:"관리",std:"WAP 통합관리대장·법규검토·저장소 점검(내부 관리도구)",review:"2026-08-08",status:"check",note:"2026-08-07 신규 배포. 2026-08-08 로컬 폰트를 1순위로 적용(Google Fonts 미사용 설계 — 기기별 시스템폰트 편차 제거). ★assets/fonts/NotoSansKR-var.woff2 업로드 대기 — sw.js 프리캐시에 이미 등재돼 있어 현재 Pages 404, 폰트만 미적용 상태"}
+    {no:"61",name:"MANMIN 종합관리 허브",repo:"manmin-hub",ver:"1.2",disc:"관리",std:"WAP 통합관리대장·법규검토·저장소 점검(내부 관리도구)",review:"2026-09-05",status:"check",note:"2026-09-05 data.js VER-1.2 — v5.0 31/37(00·08·27·37·60·61 제외) · sw v1.1.7. 종전: 2026-08-07 신규 배포. 2026-08-08 로컬 폰트를 1순위로 적용(Google Fonts 미사용 설계 — 기기별 시스템폰트 편차 제거). ★assets/fonts/NotoSansKR-var.woff2 업로드 대기 — sw.js 프리캐시에 이미 등재돼 있어 현재 Pages 404, 폰트만 미적용 상태"}
   ],
   changelog: [
+    {date:"2026-09-05", big:true, title:"S10 소급 회차 — 39종 v5.0 소급 종결 (SW 캐시 오염 차단 R25 · html2canvas 확장 누출 R27 · 표 선 R24 · JPG 소제목 이관 R28)", body:
+      "지시서 §21-1 원장 R0~R28 을 기배포 전 종에 소급했다. 단계 1 sw.js 32종 — 같은 origin 39종이 전역 caches.match 로 서로의 opaque 응답을 돌려주던 오염을 자기 접두어 한정·cors 프리캐시·opaque 가드로 차단(R25 · 30 #root 빈 화면 · 40 JPG 미리보기 불가의 원인) + allSettled(R3)·R19·캐시명 상향. 단계 2 index 27종 — 인쇄 각인 삭제(R1·R1b)·입력 38px(R21)·인쇄 제목 비움(R26)·버전 문자열. 단계 3 — 브라우저 확장 shadow DOM 시트가 html2canvas 클론에 펼쳐져 JPG 셀이 기울던 R27(31종 · data-mm-own 표식 + onclone 정화 + CDN 지연 로더) · JPG 엔진 행 나눔 R23②(13종) · 인쇄 시 collapse 표 우측 세로선 소실 R24①②(17종 · separate + 셀 자체 선 · mono 한글 폴백). 단계 4 — 20·21 은 JPG v5.4 가 표준이라 22 엔진 이식 취소, R2 패딩·R24 만 적용 + 21 요약 스트립 인쇄·20 #a4-content 잔존 padding 결함 정정. R28 — v5.4 Builder.add 가 걸린 표만 넘기고 소제목을 앞 쪽에 남기던 것을 동반 이관(v5.5 · 12종). 배포는 Claude 가 github.com 업로드 페이지에서 API 본문 fetch → op 패치 → blob SHA 대조 → DataTransfer 주입 → 커밋으로 직접 수행(S3 이후 전 회차) · 완성본 폴더는 최종 원본만 유지. 회차 중 드래그 재업로드로 S2 상태로 되돌아간 저장소 2건(32·02)을 SHA 대조로 잡아 복구. 27 부하계산(배포본이 원본)·37·39 v6.0 은 별건. 상세 2026-09-04_S10_소급회차_미반영검토_v1.md §1~§15.",
+      rows:[
+        ["sw.js","전역 caches.match · addAll · 전 캐시 삭제","mmMatch 자기 접두어 한정 · cors 프리캐시 · opaque 가드 · allSettled · PREFIX/ORPHAN","32종"],
+        ["인쇄 각인·제목","#dev-stamp/#mm-print-stamp 인쇄 · PDF 머리글 제목","CSS 비표시(R1·R1b) · beforeprint title 비움(R26)","27종"],
+        ["html2canvas 클론","확장 CSS 누출로 셀 회전·행 부풂 · 라이브러리 부재 시 조용히 중단","data-mm-own 정화 + 지연 로더(R27)","31종"],
+        ["A4 표 선","collapse → PDF 우측선·아래선 소실","separate + 셀 자체 선 · mono 스택 Noto 폴백(R24)","17종"],
+        ["JPG 쪽 나눔","표 통째 이관만 · 소제목 잔류","행 나눔 split(R23② 13종) · 소제목 동반 이관 v5.5(R28 12종)","25종"],
+        ["20·21","패딩 15/23/28 · 스트립 인쇄 · #a4-content 40px","53/45/83/53 · .no-print 인쇄 숨김 · padding 0","20·21"],
+        ["관리대장","ver 5.0 17/37","ver 5.0 31/37 (00·08·27·37·60·61 제외)","data.js VER-1.2"]
+      ]},
+    {date:"2026-09-02", big:true, title:"헤더 통일 회차 — 18종 소급 (3단 헤더·탭바·요약 스트립 규격 확정, 01 마스터 실측 기준)", body:
+      "소방 마스터(01 옥내소화전)를 8개 폭에서 실측해 헤더 3층(헤더 78.2 · 탭 44 · 요약 스트립 38 = 데스크탑 162.2px, 모바일 168.6px) 규격을 확정하고 기배포 v5.0 18종 중 17종에 소급했다(11 소방시설은 hero 구조라 다음 회차 전면 신설). 색은 도구별 토큰 6개(그라데이션 3색·강조색·활성 탭·shadow)만 두고 구조·치수·서체·간격은 전부 동일하다. 확정 사항: 활성 탭 단색 배경 + 강조색 3px 바 · 모바일 eyebrow 표시 · 소방 웹은 번호+명칭, 비소방은 심벌+명칭 · 요약 스트립이 없던 20~26 은 도구별 핵심 산정값 3~6개로 신설(계산 함수를 문서 끝 별도 스크립트로 래핑, 계산 구간 무접촉). 회차 중 잡은 결함: 지시서 §3-1 의 sub line-height 1.7 이 78.2 와 모순(17px 로 정정) · 기계 4종(22·24·25·26)이 Pretendard 서체라 normal 줄높이로 156~160px 로 줄어 전 요소 줄높이를 px 고정 · 01~07 각인이 태그목록 !important 에 눌려 Orbitron 미적용 · 46·26·10 의 420/540/380 블록에 남은 모바일 탭 축소(31·28px) · 20·21 manifest display_override 로 설치앱 제목줄 소실 · 20 sw.js 가 'manmin-' 접두어로 01~07·46 캐시까지 삭제. sw.js 는 18종에 도구 고유 PREFIX + ORPHAN 처방(§17-1). 검증: 17종 계산 구간 diff 0행(React 4종은 헤더 인라인 스타일만) · 숫자토큰 증감 0 · 배포본 iframe 주입 실측 1400 = 162.2 전 종. 상세는 2026-09-02_헤더통일_규격표·편차매트릭스_v1.md, 함정은 지시서 §18.",
+      rows:[
+        ["헤더 규격","도구별 상이(sub 20.4 · 탭 39~45.5 · 스트립 유무)","162.2 / 168.6 고정 · 탭 44 · 스트립 38 · 줄높이 px","17종"],
+        ["활성 탭","흰 틴트 .12 + ::after (20~26) / 단색 (01~07)","단색(주도색) + 강조색 3px 바","17종"],
+        ["탭 표기","혼재","소방 번호+명칭 · 비소방 심벌+명칭 (46 번호 pill 삭제)","46"],
+        ["요약 스트립","01~10·46 만 존재","20·21·22·24·25·26 신설 — 계산 함수 래핑","6종"],
+        ["MANMIN 각인","01~07 Orbitron 미적용","클래스 특이성으로 복원","01~07"],
+        ["모바일 탭 축소 잔재","46 31px · 26 28px · 10 35.8px","44px / 13px 전 폭","46·26·10"],
+        ["sw.js","전 종 삭제 필터 / 'manmin-' 접두어","PREFIX + ORPHAN — usu-·sanpipe-·jeyeon-·genset-·load-·manmin-indoor-hydrant- 등","18종"],
+        ["manifest","20·21 display_override: WCO","standalone 만 (제목줄 복원)","20·21"],
+        ["25 manifest","급탕설비 (구 이름)","급탕량·보일러 출력 산정 시스템 · MANMIN Ver-5.0","25"]
+      ]},
+    {date:"2026-08-31", big:true, title:"S4 디자인 통일 v5.0 — 소방 11종 + 20·21·46 + 기계 22·24·25·26 (헤더 그라데이션·A4 여백 1:1·JPG 시트·SW 정비)", body:
+      "전 종 Ver-5.0 재출발. 헤더는 소방 마스터 3단 구조(eyebrow·h1·부제+각인) + 135deg 3색 그라데이션으로 통일하고 sticky 를 해제했다(§3-1·§3-8). 탭이 헤더 밖인 20·21 은 .hdr-shell 래퍼로 한 면을 만들어 색 띠 2줄 문제를 해소(§3-2-1). A4 는 화면 padding 53/45/83/53px = @page margin 14/12/22/14mm 로 1:1 정합(§3-4-1), 인쇄는 window.print() 로 일원화하고 jsPDF 를 폐기, JPG 는 A4 비율 분할 + 저장 시트 + 쪽번호(§3-5). 21 에서 표 min-width 함정(계산 후 문서폭 611px)을 잡아 규격에서 min-width 를 금지(§3-10). 서비스워커는 문서 Network-first 분기를 필수화(§11-3)하고 22·24·25·26 부터 도구 고유 PREFIX 를 도입(§17-1). 20 건물우수는 모바일 계산 후 문서폭 596px 사고를 .two-col>*{min-width:0} 으로 해소. 24·25·26 회차에서 함정 12건(A4 미디어쿼리·래퍼 width 인라인·시트 CSS 삽입 위치·터치 타깃 등)을 §17 로 정리했다.",
+      rows:[
+        ["버전","2.0~3.4 혼재","전 종 Ver-5.0 · 각인 MANMIN · Ver-5.0","18종"],
+        ["헤더","단색 · sticky · 로고 심벌","3단 텍스트 · 135deg 그라데이션 · 고정 해제","18종"],
+        ["A4 여백","화면≠인쇄(15/23/28px)","53/45/83/53px = @page 14/12/22/14mm","11·20~26"],
+        ["출력","jsPDF 이미지 · 통짜 JPG","window.print() 텍스트 PDF · A4 분할 JPG + 시트 + 쪽번호","11·20~26"],
+        ["브레이크포인트","도구별 9~18종","1024·860·768·640·480·420 6종","20~26"],
+        ["표","min-width 560 → 모바일 611px 넘침","min-width 금지 · 실측 넘침 시만 힌트","21"],
+        ["sw.js","문서 Cache-first · 전 종 삭제","navigate Network-first · PREFIX(22·24·25·26)","18종"],
+        ["폰트","Noto Sans Mono · 유니버설 !important","JetBrains Mono · 태그목록 · 로컬 woff2 · Orbitron","18종"]
+      ]},
     {date:"2026-08-08", big:true, title:"WAP 10종 — 로컬 폰트 폴백 일괄 적용 (오프라인·차단망 한글 깨짐 방지)", body:
       "Google Fonts CDN에만 의존하던 폰트 체계를 로컬 WOFF2 폴백과 병행 구조로 전환. HTML 103개 전수조사에서 58개가 CDN 의존·자체 @font-face 0개·SW 폰트 미캐시 20개를 확인하고 착수했다. 핵심은 패밀리명 분리 — 로컬 @font-face를 'Noto Sans KR'로 그냥 선언하면 나중 선언인 로컬이 항상 이겨 CDN이 무용지물이 되므로, 'Noto Sans KR Local'로 이름을 나눠 폰트 스택 2순위에 두었다. 폰트는 google/fonts 고정 SHA(2d85e20)의 NotoSansKR[wght].ttf를 KS X 1001 한글 2,350 + KS 기호 987 + 라틴 + 공학기호 + 실사용·상용 한자 180 = 3,659자로 서브셋해 418KB 가변 1파일(wght 100~900)로 만들었다. 원본 42MB 대비 99% 절감. 빌드 스크립트를 manmin-hub/tools/font/ 에 두어 재현 가능하게 했다(fonttools 4.63.0·Brotli 1.2.0 고정 시 바이트 동일 확인). 검증은 14개 페이지 실사용 문자를 폰트 cmap과 대조하는 방식으로 했고, 이 과정에서 서브셋 누락 2건(© − ㎥ / 한자 小常時)을 잡아 두 차례 재생성했다. 배포 후 clone 재대조 38/38 바이트 일치, Pages 200/417.9KB, SW 캐시 v3.4 활성 확인. 관리허브는 Google Fonts 미사용 사이트라 로컬을 1순위로 두어 기기별 시스템폰트 편차(Windows 맑은고딕/macOS Apple SD)를 없앴다 — 서체가 실제로 바뀐다. 정정: 초안에 적은 '온라인에서는 로컬 폰트를 받지 않는다'는 사실과 다르다. sw.js PRECACHE에 등재했으므로 SW 설치 시 항상 받으며, 이는 오프라인 대응을 위한 의도된 동작이다.",
       rows:[
@@ -109,6 +145,12 @@ window.MANMIN_DATA = {
     {date:"2026-06-05", title:"WAP 종합검토보고서 작성", body:"37종 WAP 구조·기술스택·배포 체계 종합 검토(MANMIN_홈페이지_WAP_종합검토보고서_2026-06-05.docx)."}
   ],
   pending: [
+    "S10 소급 잔여(MIN 결정) — R6 06·07 스트립 · R9 방문 계측 · R10 본문 서체 Noto 통일(22·24·25·26·31) · R11 PWA 설치 버튼 · R14 25 brand-icon.jpg·favicon-32.png 웹 삭제 · R16 KDS 근거 · 01~07 CLEAR_CACHE 자기 접두어 한정 · 범위 외 SW(busong-badminton·name-card·singapore-family-2026·manmin-law·27·61) R25 적용.",
+    "27 부하계산 — 배포본 9d78fd96(426KB)이 원본, 로컬 v5.0 없음 → 회수 후 v5.0 소급. 37 저장소 생성 여부. 39 EPI v6.0 서식 재구축(§21-4).",
+    "22·24·25·26 본문 서체 Pretendard — §3-7(Noto Sans KR) 통일 여부 MIN 판단. 헤더는 px 줄높이로 서체 무관 처리 완료.",
+    "헤더 PWA 설치 버튼 — 01~07 숨김, 09·10·20·21 설치 가능 시 노출. 전 종 통일 여부 MIN 판단.",
+    "06·07 요약 스트립 7항목 긴 라벨 — 375px 에서 7행(228px). 라벨 단축 여부.",
+    "11 소방시설 — hero 헤더(375px·탭 없음)를 3단 헤더+탭+스트립으로 전면 신설 (헤더 통일 회차 잔여 1종).",
     "00 포탈 페이지 높이 68,280px — 단일 파일 6,815줄. 섹션 분할 또는 지연 렌더링 검토 여지(현재 기능 이상 없음). 이 높이 때문에 자동 스크린샷·스크롤 테스트가 불가하므로 시각 검수는 사람이 해야 함.",
     "00 포탈 index.html 4행 — Cloudflare 주입 스크립트(/cdn-cgi/scripts/.../email-decode.min.js)가 소스에 저장돼 있음. GitHub Pages에는 해당 경로가 없어 404(무해하나 불필요 요청 1건). 다음 회차 제거 검토.",
     "39 EPI — 부문별 최소배점 로직(mandMin)은 구현됨. 제2025-738호 별지 배점표 세부값과 1:1 재대조 후 필요 시 미세조정.",
