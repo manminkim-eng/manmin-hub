@@ -1,7 +1,7 @@
 {
   "name": "MANMIN 웹 종합관리 허브",
   "short_name": "MANMIN 허브",
-  "description": "MANMIN 엔지니어링 WAP 통합관리대장·법규검토·GitHub 저장소 감사 (MANMIN VER-1.1)",
+  "description": "MANMIN 엔지니어링 WAP 통합관리대장·법규검토·GitHub 저장소 감사 (MANMIN VER-1.2)",
   "lang": "ko",
   "dir": "ltr",
   "start_url": "./index.html",

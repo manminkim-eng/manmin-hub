@@ -1,8 +1,8 @@
-/* MANMIN 종합관리 허브 · Service Worker · VER-1.1
+/* MANMIN 종합관리 허브 · Service Worker · VER-1.2
    전략: 정적 자산 프리캐시 + 네트워크 우선(문서), 캐시 우선(자산) */
 /* §17-1 — 도구 고유 접두어. 종전 `k !== CACHE` 필터는 같은 origin 의 39종 캐시를 전부 지웠다 */
 const PREFIX = 'manmin-hub-';
-const CACHE = 'manmin-hub-v1.1.7';   /* 2026-09-05 data.js VER-1.2 · S10 소급 31종 5.0 */
+const CACHE = 'manmin-hub-v1.1.8';   /* 2026-09-05 하위 페이지 VER-1.2 표기 통일 */
 const ASSETS = [
   './', './index.html', './repo-audit.html', './wap-registry.html',
   './law-review.html', './404.html',
