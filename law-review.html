@@ -18,6 +18,7 @@
 
 <link rel="stylesheet" href="assets/manmin.css">
 <style>:root{--accent:#B0453A;--accent-d:#8C3529;}</style>
+<script src="assets/data.js"></script>
 <script src="assets/manmin.js" defer></script>
 </head>
 <body data-mm="law">
@@ -39,7 +40,7 @@
  <div class="txt">
   <p class="mm-kicker">MANMIN ENGINEERING · LEGAL &amp; TECHNICAL REVIEW</p>
   <h1>WAP 법규·기술기준 정밀검토</h1>
-  <p class="sub">baseline 2026-07-09 · 재조사 추록 2026-08-05 · EPI 법규 감사 추록 2026-09-05</p>
+  <p class="sub">baseline 2026-07-09 · 재조사 추록 2026-08-05 · EPI 법규 감사 추록 2026-09-05 · 분기 정기검토 추록 2026-10-17</p>
   <div class="mm-ver">MANMIN VER-1.3</div>
  </div>
 </header>
@@ -252,11 +253,45 @@
 </table></div>
 <p style="font-size:11.5px;color:#7a8794;border-top:1px dashed #dde3e9;padding-top:10px;margin-top:16px">추록 작성 2026-09-05 · 법령 확인수단: LawMCP(get_admin_rule 2100000282390 · 시행령 mst 285225 · 공공기관 규정 2100000278366) · 상세: 39 README v5.1~v5.4</p>
 
+<span id="addendum-20261017"></span><h2>9. 추록 — 2026-10-17 4분기 정기검토 조문 대조 결과</h2>
+<p style="font-size:13px;color:#5b6672;margin:0 0 12px">2026-10-06 분기 정기검토(무인 실행)에서 시행일·MST 변경만 감지하고 조문 대조를 보류한 6건을, 2026-10-08~10-17 WAP 상향 작업의 원문 대조 기록과 LawMCP 재조회(2026-10-17)로 판정했다. 계산 수치를 바꾸는 미반영 개정은 없다.</p>
+<h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">9.1 감지 6건 판정</h3>
+<div class="tw"><table>
+<thead><tr><th>법령</th><th>현행(LawMCP 2026-10-17)</th><th>대조 조문 · 결과</th><th>영향 WAP · 조치</th></tr></thead>
+<tbody>
+<tr><td>건축법 시행령</td><td>대통령령 제36746호 2026-10-06 공포·시행 (MST 290833) · 제61조제2항 개정규정은 2027-04-07 시행</td><td>부칙 제2조 적용례 대상은 제46조제2항제9호(방화구획) · 제61조제2항(외벽 마감재료). 제32조제2항(최종개정 2024-12-17) · 제86조 · 제14조 · 제19조 개정 없음</td><td class="ok">33 v5.0.6 · 35 v5.0.6 · 38 v5.0.6 · 45 v5.0.8 — 현행본 대조 완료 · 계산 무영향</td></tr>
+<tr><td>건축물의 설비기준 등에 관한 규칙</td><td>국토교통부령 2026-08-24 공포·시행 (MST 289011)</td><td>제11조① 30세대 이상 신축공동주택등 0.5회/h · ⑤ 다중이용시설 별표 1의6 — 원문 확인</td><td class="ok">26 v5.0.10~5.0.11(2026-10-13) 원문 대조 반영 · 계산 무영향</td></tr>
+<tr><td>소방시설 설치 및 관리에 관한 법률 시행령</td><td>대통령령 제36728호 2026-09-29 공포 · 2026-10-02 시행</td><td>별표 4 제1호~제5호 · 별표 2 — 직전판 대비 유치장 항목 근거법 추가만, 판정 조건 변경 없음</td><td class="ok">11 v5.2.0(2026-10-17) 판정엔진 FPENG 재작성 · 근거 표기 현행화</td></tr>
+<tr><td>주차장법 시행령</td><td>2026-08-25 공포 · 2026-08-28 시행 (MST 288729)</td><td>별표 1 제5호(도시형 생활주택 단서) 개정</td><td class="ok">40 v5.1.0~5.1.1(2026-10-15) 별표 1 원문 대조 전면 정정 · 전북 14개 시·군 조례 내장</td></tr>
+<tr><td>국토의 계획 및 이용에 관한 법률 시행령</td><td>2026-08-18 공포 · 2026-09-18 시행 (MST 288857)</td><td>제84조 · 제85조 건폐율·용적률 — 문언 변경 없음</td><td class="ok">36 v5.1.0(2026-10-15) 대조 · 조례 데이터 정정</td></tr>
+<tr><td>건축법</td><td>현행 2026-02-27 · 시행예정 2026-11-12(제61조①) 외</td><td>제61조① 일조 높이제한 개정 — 시행 전</td><td class="warn">38 v5.0.6 안내 문구 추가 · <b>2026-11-12 시행 후 판정 로직 재확인</b></td></tr>
+</tbody></table></div>
+<h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">9.2 함께 확인한 사항</h3>
+<div class="tw"><table>
+<thead><tr><th>항목</th><th>결과</th></tr></thead>
+<tbody>
+<tr><td>60 MANMIN LEGAL REVIEW 2026-09월호</td><td class="ok">v1.2(a417d84) — 확정 14건 법령번호·공포일·시행일 LawMCP 대조 불일치 0. 주택법 시행령 · 주택건설기준 등에 관한 규정 · 공공주택 특별법 시행령 현행 2026-09-08 공포·시행 재확인</td></tr>
+<tr><td>소방 NFPC·NFTC 102·103·103A·109·501·604</td><td class="ok">01~08 v5.1.0~5.2.1(2026-10-15~17) — 행정규칙 원문 대조로 판번호·조문 정정(NFTC 102 제2026-34호 · 103 제2026-35호 · 103A 제2024-58호 · 109 제2026-9호)</td></tr>
+<tr><td>KDS 61 40 00 · 61 10 00 · 11 80 05 · 11 60 00 · 41 17 00 · 17 10 00</td><td class="ok">46 · 50 · 51 v5.1.0 — 국가건설기준센터 원문 대조(각 정정내역 · 참고자료 KDS_원문대조_2026-10-17.md)</td></tr>
+<tr><td>주택건설기준 등에 관한 규정 제36308호</td><td class="warn">2026-11-07 시행예정 — 60 10월호(2026-11-03 발간) 「지금 챙겨야 할 일정」 수록 여부 확인</td></tr>
+</tbody></table></div>
+<h3 style="font-size:15px;color:#1d466b;margin:18px 0 8px">9.3 차기 정기검토(2027-01-05) 이월</h3>
+<div class="tw"><table>
+<thead><tr><th>No</th><th>대상</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>소방시설법 시행령 2027-01-01 시행예정본(제35151호)</td><td>11 소방시설 별표 4 판정 조건 대조 — 미실시</td></tr>
+<tr><td>2</td><td>건축물관리법 2027-02-12 시행분(2026-08-11 공포)</td><td>32 해체감리 제30~32조 사전 대조</td></tr>
+<tr><td>3</td><td>건축법 시행령 제61조제2항 2027-04-07 시행분</td><td>외벽 마감재료 — 현 WAP 계산 범위 밖, 월간 법규검토 수록만</td></tr>
+<tr><td>4</td><td>에너지절약설계기준 · 기계설비 기술기준 별표8·9 · 대가기준</td><td>27·31·39 / 22·23 / 30 — 2026-10-06 보고서 미확인 항목 유지</td></tr>
+</tbody></table></div>
+<p style="font-size:11.5px;color:#7a8794;border-top:1px dashed #dde3e9;padding-top:10px;margin-top:16px">추록 작성 2026-10-17 · 법령 확인수단: LawMCP(search_law · get_law_text 부칙 · get_article_detail 건축법 시행령 제32조② · 설비규칙 제11조) · 근거: 2026-10-06 분기 정기검토 보고서 · 각 WAP 버전 폴더 _정정내역.md</p>
+
 <footer>
  <span class="lg"><img src="assets/manmin-logo.jpg" alt="MANMIN"></span>
  ㈜대성건축사사무소 · 건축사 김만민 (#20072) · 국제공인 가치공학 전문가(CVS·VMP)<br>
- 전북 익산 · manminkim-eng · MANMIN VER-1.3 · 기준일 2026-09-05<br>법령 확인수단: LawMCP · KDS·KCS는 국가건설기준센터 별도 확인
+ 전북 익산 · manminkim-eng · MANMIN VER-1.3 · 기준일 <span data-asof>2026-10-17</span><br>법령 확인수단: LawMCP · KDS·KCS는 국가건설기준센터 별도 확인
 </footer>
+<script>(function(){var D=window.MANMIN_DATA;if(!D)return;document.querySelectorAll("[data-asof]").forEach(function(e){e.textContent=D.asof});})();</script>
 </div>
 <nav class="mm-tabs no-print"><a href="index.html" data-k="hub"><i>⌂</i>허브</a><a href="repo-audit.html" data-k="repo"><i>▤</i>저장소</a><a href="wap-registry.html" data-k="reg"><i>▦</i>WAP 대장</a><a href="law-review.html" data-k="law"><i>§</i>법규검토</a></nav>
 </body>
