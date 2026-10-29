@@ -2,7 +2,7 @@
    전략: 정적 자산 프리캐시 + 네트워크 우선(문서), 캐시 우선(자산) */
 /* §17-1 — 도구 고유 접두어. 종전 `k !== CACHE` 필터는 같은 origin 의 39종 캐시를 전부 지웠다 */
 const PREFIX = 'manmin-hub-';
-const CACHE = 'manmin-hub-v1.2.14';   /* 2026-10-30 · 42 건축 통합 포털 Pages 활성화 반영 (종전 v1.2.13 42 등재 · 홈페이지 v2.18 (종전 v1.2.12 27 RTS 5.3.2 정정) */
+const CACHE = 'manmin-hub-v1.2.15';   /* 2026-10-30 · 38 일조사선 v5.1.0 · 홈페이지 v2.19 (종전 v1.2.14 42 건축 포털 Pages 활성화) */
 const ASSETS = [
   './', './index.html', './repo-audit.html', './wap-registry.html',
   './law-review.html', './404.html',
