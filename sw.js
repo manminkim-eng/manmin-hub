@@ -2,7 +2,7 @@
    전략: 정적 자산 프리캐시 + 네트워크 우선(문서), 캐시 우선(자산) */
 /* §17-1 — 도구 고유 접두어. 종전 `k !== CACHE` 필터는 같은 origin 의 39종 캐시를 전부 지웠다 */
 const PREFIX = 'manmin-hub-';
-const CACHE = 'manmin-hub-v1.2.40';   /* 2026-10-31 · 카드 이미지 37장 · 법규검토 v1.3.1 기록 (종전 v1.2.39) */
+const CACHE = 'manmin-hub-v1.2.41';   /* 2026-10-31 · 성능지표 v5.4.9 자동설치 정비 기록 (종전 v1.2.40) */
 const ASSETS = [
   './', './index.html', './repo-audit.html', './wap-registry.html',
   './law-review.html', './404.html',
