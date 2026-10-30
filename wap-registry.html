@@ -17,7 +17,10 @@
 <meta name="application-name" content="MANMIN 허브">
 
 <link rel="stylesheet" href="assets/manmin.css">
-<style>:root{--accent:#2F6FB0;--accent-d:#245688;}</style>
+<style>:root{--accent:#2F6FB0;--accent-d:#245688;}
+.disc-b{display:inline-block;padding:2px 9px;border-radius:999px;border:1px solid;font-weight:800;font-size:12px;line-height:1.5;white-space:nowrap}
+#filters button[data-c]{border-left:4px solid var(--dc)}
+</style>
 <script src="assets/data.js"></script>
 <script src="assets/manmin.js" defer></script>
 </head>
@@ -89,6 +92,10 @@ const DATA = window.MANMIN_DATA;
 
 // 분야 목록은 DATA.waps 에서 자동 도출 — 분야 추가 시 필터가 자동 반영됨
 const DISC = ["전체", ...[...new Set(DATA.waps.map(w=>w.disc))]];
+// 공종 5색(작업지시서 §25-3 deep · tint) — 분야 배지 · 필터 단추
+const DCOL = {'소방':['#15803d','#dcfce7'],'기계':['#2d5186','#dbeafe'],'건축':['#785a28','#f6ecd6'],'구조':['#4c388c','#ede9fe'],'토목':['#0f766e','#ccfbf1']};
+const discB = (d)=>DCOL[d]?`<span class="disc-b" style="color:${DCOL[d][0]};background:${DCOL[d][1]};border-color:${DCOL[d][0]}55">${d}</span>`:d;
+
 const ST = {latest:["최신","ok"],updated:["최근 업그레이드","upd"],check:["확인 필요","chk"],review:["검토 대상","rev"]};
 const $ = (id)=>document.getElementById(id);
 document.querySelectorAll('#asof,#asof2,[data-asof]').forEach(e=>e.textContent=DATA.asof);
@@ -114,11 +121,11 @@ $('timeline').innerHTML = DATA.changelog.map(c=>{
 
 // wap table
 let curFilter="전체";
-$('filters').innerHTML = DISC.map(d=>`<button data-d="${d}" class="${d==='전체'?'on':''}">${d}</button>`).join('');
+$('filters').innerHTML = DISC.map(d=>`<button data-d="${d}"${DCOL[d]?` data-c style="--dc:${DCOL[d][0]}"`:''} class="${d==='전체'?'on':''}">${d}</button>`).join('');
 function renderTable(){
   const rows = DATA.waps.filter(w=>curFilter==='전체'||w.disc===curFilter);
   $('waptable').innerHTML = `<thead><tr><th class="c">번호</th><th>명칭</th><th>분야</th><th>버전</th><th>적용 기준 · 시행일</th><th class="c">최종검토</th><th class="c">상태</th><th>비고</th></tr></thead><tbody>`+
-    rows.map(w=>`<tr><td class="c">${w.no}</td><td><b>${w.name}</b><br><span class="pill">${w.repo}</span></td><td class="c">${w.disc}</td><td class="c">${w.ver||'—'}</td><td>${w.std}</td><td class="c">${w.review}</td><td class="c"><span class="tag ${ST[w.status][1]}">${ST[w.status][0]}</span></td><td>${w.note||''}</td></tr>`).join('')+`</tbody>`;
+    rows.map(w=>`<tr><td class="c">${w.no}</td><td><b>${w.name}</b><br><span class="pill">${w.repo}</span></td><td class="c">${discB(w.disc)}</td><td class="c">${w.ver||'—'}</td><td>${w.std}</td><td class="c">${w.review}</td><td class="c"><span class="tag ${ST[w.status][1]}">${ST[w.status][0]}</span></td><td>${w.note||''}</td></tr>`).join('')+`</tbody>`;
 }
 $('filters').addEventListener('click',e=>{ if(e.target.tagName==='BUTTON'){ curFilter=e.target.dataset.d; document.querySelectorAll('#filters button').forEach(b=>b.classList.toggle('on',b===e.target)); renderTable(); }});
 renderTable();
